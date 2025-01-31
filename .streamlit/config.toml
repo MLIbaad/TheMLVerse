@@ -1,6 +1,7 @@
+
 [theme]
-base = "dark"
-primaryColor = "#FF4B4B"
-backgroundColor = "#0E1117"
-secondaryBackgroundColor = "#262730"
-textColor = "#FAFAFA"
+primaryColor = "#6366F1"  # A softer purple for better contrast
+backgroundColor = "#0D1117"  # GitHub dark mode background (very sleek)
+secondaryBackgroundColor = "#161B22"  # Slightly lighter for contrast
+textColor = "#E6EDF3"  # Soft white (reduces eye strain)
+font = "sans serif"  # More professional and clean look
