@@ -16,13 +16,13 @@ st.set_page_config(
 @st.cache_resource  # Ensures models load once and stay in memory
 def load_models():
     return {
-        "diabetes": pickle.load(open('I:/MultipleDiseasePrediction/mdpss/saved_models/diabetes_model.sav', 'rb')),
-        "heart": pickle.load(open('I:/MultipleDiseasePrediction/mdpss/saved_models/heart_disease_model.sav', 'rb')),
-        "parkinsons": pickle.load(open('I:/MultipleDiseasePrediction/mdpss/saved_models/parkinsons_model.sav', 'rb')),
-        "bank_loan": pickle.load(open('I:/TEST_GODFATHER_PREDICTEOR/Papa_prediction/mdpss/LOAN_PREDICT_Model.pkl', 'rb')),
-        "fake_news_vectorizer": joblib.load(r"I:/TEST_GODFATHER_PREDICTEOR/Papa_prediction/mdpss/saved_models/vectorizer.jb"),
-        "fake_news_model": joblib.load(r"I:/TEST_GODFATHER_PREDICTEOR/Papa_prediction/mdpss/saved_models/lr_model.jb"),
-        "credit_fraud": pickle.load(open('I:/TEST_GODFATHER_PREDICTEOR/Papa_prediction/mdpss/saved_models/Credit_card_model.pkl', 'rb')),
+        "diabetes": pickle.load(open('saved_models/diabetes_model.sav', 'rb')),
+        "heart": pickle.load(open('saved_models//heart_disease_model.sav', 'rb')),
+        "parkinsons": pickle.load(open('saved_models/parkinsons_model.sav', 'rb')),
+        "bank_loan": pickle.load(open('saved_models/LOAN_PREDICT_Model.pkl', 'rb')),
+        "fake_news_vectorizer": joblib.load(r"saved_models/vectorizer.jb"),
+        "fake_news_model": joblib.load(r"saved_models/lr_model.jb"),
+        "credit_fraud": pickle.load(open('saved_models/Credit_card_model.pkl', 'rb')),
     }
 
 # Load models ONCE
