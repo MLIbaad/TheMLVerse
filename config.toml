@@ -1,0 +1,20 @@
+#[theme]
+#primaryColor="#8B5CF6"
+#backgroundColor="#0F172A"
+#secondaryBackgroundColor="#1E293B"
+#textColor="#FFFFFF"
+#font="Bold Addict"
+
+#[theme]
+#primaryColor="#00FFD1"  # Bright cyan for futuristic accent
+#backgroundColor="#0A1128"  # Deep midnight blue
+#secondaryBackgroundColor="#1A2447"  # Dark steel blue
+#textColor="#E6E6FA"  # Lavender white for soft readability
+#font="Orbitron"  # Futuristic, tech-inspired font
+
+[theme]
+primaryColor = "#6366F1"  # A softer purple for better contrast
+backgroundColor = "#0D1117"  # GitHub dark mode background (very sleek)
+secondaryBackgroundColor = "#161B22"  # Slightly lighter for contrast
+textColor = "#E6EDF3"  # Soft white (reduces eye strain)
+font = "sans serif"  # More professional and clean look
