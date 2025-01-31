@@ -1,0 +1,23 @@
+numpy
+streamlit
+pandas
+plotly
+yfinance
+scikit-learn
+matplotlib
+transformers[sentencepiece,tokenizers]  # Minimal transformers with tokenizers
+torch
+scipy
+ydata-profiling
+streamlit-pandas-profiling
+beautifulsoup4
+requests
+Pillow
+seaborn
+lazypredict
+xgboost
+catboost  # No specific classifier component to install separately
+joblib
+base64
+operator
+
