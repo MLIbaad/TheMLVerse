@@ -11,6 +11,13 @@ st.set_page_config(
     page_title="The ML Verse",
     page_icon="👑",
     layout="wide"
+    theme={
+        "base": "dark",  # or "light"
+        "primaryColor": "#FF4B4B",
+        "backgroundColor": "#0E1117",
+        "secondaryBackgroundColor": "#262730",
+        "textColor": "#FAFAFA"
+    }
 )
 
 @st.cache_resource  # Ensures models load once and stay in memory
