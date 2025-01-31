@@ -8,7 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 st.set_page_config(
-    page_title="ML Verse2",
+    page_title="The ML Verse",
     page_icon="👑",
     layout="wide"
 )
