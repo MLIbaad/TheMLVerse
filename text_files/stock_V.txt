@@ -1,0 +1,5 @@
+- **Ticker**: Stock symbol identifying a specific publicly traded company (e.g., AAPL for Apple Inc.)
+- **Start Date**: Beginning date for stock price historical data analysis
+- **End Date**: Final date for stock price historical data collection
+---
+---

@@ -1,0 +1,31 @@
+## Fake News Detection
+Dataset:
+- Fake News Dataset: https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
+
+Common Algorithms:
+- TF-IDF with Logistic Regression
+- BERT
+- LSTM Networks
+- Naive Bayes
+
+Articles:
+1. Fake News Detection Guide:
+https://www.kaspersky.com/resource-center/preemptive-safety/how-to-identify-fake-news
+2. NLP for Fake News Detection:
+https://www.analyticsvidhya.com/blog/2021/07/detecting-fake-news-with-natural-language-processing/
+
+## Credit Card Fraud
+Dataset:
+- Credit Card Fraud Dataset: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
+Common Algorithms:
+- Isolation Forest
+- Local Outlier Factor
+- Autoencoders
+- Random Forest
+
+Articles:
+1. Fraud Detection Techniques:
+https://www.fraud.com/post/5-fraud-detection-methods-for-every-organization
+2. Anomaly Detection Guide:
+https://www.datacamp.com/tutorial/introduction-to-anomaly-detection

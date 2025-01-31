@@ -1,0 +1,27 @@
+## Sentiment Analysis
+Dataset:
+- Twitter Sentiment Analysis Dataset: https://www.kaggle.com/datasets/kazanova/sentiment140
+
+Common Algorithms:
+- RoBERTa
+- BERT
+- LSTM
+- TextBlob
+
+Articles:
+1. Sentiment Analysis with Transformers:
+https://www.analyticsvidhya.com/blog/2022/02/sentiment-analysis-using-transformers/
+2. Advanced Sentiment Analysis:
+https://medium.com/@deepak2009thakur_46286/advanced-sentiment-analysis-harnessing-the-power-of-custom-models-and-fine-tuning-1cf96bfaac9f
+
+## EDA
+Tools Used:
+- Pandas Profiling
+- SweetViz
+- AutoViz
+
+Guides:
+1. Complete EDA Guide:
+https://towardsdatascience.com/exploratory-data-analysis-eda-a-practical-guide-and-template-for-structured-data-abfbf3ee3bd9
+2. Automated EDA Tools:
+https://builtin.com/data-science/EDA-python

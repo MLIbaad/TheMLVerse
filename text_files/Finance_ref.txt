@@ -1,0 +1,48 @@
+## House Price Prediction
+Dataset:
+- California Housing Dataset: https://www.kaggle.com/datasets/camnugent/california-housing-prices
+
+Common Algorithms:
+- Linear Regression
+- Random Forest Regression
+- Gradient Boosting Regressor
+- XGBoost
+
+Articles:
+1. House Price Prediction Guide:
+https://medium.com/@varun.tyagi83/house-price-prediction-with-machine-learning-d49f93d681f2
+2. Advanced Housing Price Prediction:
+https://thesai.org/Downloads/Volume12No12/Paper_91-Advanced_Machine_Learning_Algorithms.pdf
+
+## Stock Prediction
+Dataset Sources:
+- Yahoo Finance API
+- NASDAQ Historical Data: https://www.nasdaq.com/market-activity/quotes/historical
+
+Common Algorithms:
+- LSTM Networks
+- ARIMA
+- Prophet
+- Linear Regression
+
+Articles:
+1. Stock Price Prediction Using LSTM:
+https://towardsdatascience.com/stock-price-prediction-using-lstm-13af86a74944
+2. Time Series Forecasting Guide:
+https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/
+
+## Bank Loan Prediction
+Dataset:
+- Loan Prediction Dataset: https://www.kaggle.com/datasets/altruistdelhite04/loan-prediction-problem-dataset
+
+Common Algorithms:
+- Logistic Regression
+- Decision Trees
+- Random Forest
+- Neural Networks
+
+Articles:
+1. Loan Eligibility Prediction:
+https://www.sciencedirect.com/science/article/abs/pii/S0957417423004049
+2. Credit Risk Analysis:
+https://corporatefinanceinstitute.com/resources/commercial-lending/credit-risk-analysis/

@@ -1,0 +1,32 @@
+## AutoML
+Dataset Example:
+- Boston Housing Dataset: https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html
+
+Tools Used:
+- LazyPredict
+- TPOT
+- Auto-Sklearn
+
+Articles:
+1. AutoML Guide with Python:
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11416892/
+2. LazyPredict Tutorial:
+https://www.sciencedirect.com/science/article/pii/S1746809423004494
+
+## No-Code ML
+Common Algorithms:
+- XGBoost Classifier                      -  CatBoost Classifier
+- Random Forest Classifier                -  Logistic Regression
+- Support Vector Classifier               -  K-Nearest Neighbors
+- Decision Tree Classifier                -  Gaussian Naive Bayes
+- Gradient Boosting Classifier            -  AdaBoost Classifier
+- Ridge Classifier                        -  Extra Trees Classifier
+- Linear Discriminant Analysis            -  Quadratic Discriminant Analysis
+- Multi-Layer Perceptron Classifier       -  Bagging Classifier -
+
+
+Resources:
+1. No-Code ML Platforms:
+https://graphite-note.com/no-code-machine-learning-platforms/
+2. Automated Machine Learning:
+https://ieeexplore.ieee.org/abstract/document/8789865/
