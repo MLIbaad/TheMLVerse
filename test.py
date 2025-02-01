@@ -134,7 +134,8 @@ with (st.sidebar):
     selected_section = option_menu(
         menu_title="𝕋𝕙𝕖 𝕄𝕃 𝕍𝕖𝕣𝕤𝕖",
         options=["About Project", "Diseases Prediction", "Finance Models", "Fake Predictions", "Analyzer Models",
-                 "Algorithm Master","REFERENCE"],
+                  "Algorithm Master"]
+                 #"REFERENCE"],
         icons=["book", "book", "book", "book", "book", "book","list"],
         menu_icon="list-task",
         default_index=0
@@ -1613,69 +1614,69 @@ elif selected_section == "Algorithm Master":
             st.info("Please upload a CSV file to get started.")
 
 
-elif selected_section == "REFERENCE":
-    st.markdown("<h1 style='text-align: center; text-decoration: underline; color:red;'>Model Reference Center</h1>",
-                unsafe_allow_html=True)
+# elif selected_section == "REFERENCE":
+#     st.markdown("<h1 style='text-align: center; text-decoration: underline; color:red;'>Model Reference Center</h1>",
+#                 unsafe_allow_html=True)
 
-    st.markdown(
-        "<h1 style='text-align: center;'>"
-        "Welcome to the Model Reference App! Select a category from the dropdown below to view its associated models and reference information.</h1>",
-        unsafe_allow_html=True)
+#     st.markdown(
+#         "<h1 style='text-align: center;'>"
+#         "Welcome to the Model Reference App! Select a category from the dropdown below to view its associated models and reference information.</h1>",
+#         unsafe_allow_html=True)
 
-    # Center the selectbox using columns
-    col1, col2, col3 = st.columns([1, 3, 1])
-    with col2:
-        selected_option = st.selectbox(
-            "Choose a model category:",
-            options=[
-                "Select a category",
-                "Diseases Prediction",
-                "Finance Models",
-                "Fake Predictions",
-                "Analyzer Models",
-                "Algorithm Master"
-            ],
-            index=0
-        )
+#     # Center the selectbox using columns
+#     col1, col2, col3 = st.columns([1, 3, 1])
+#     with col2:
+#         selected_option = st.selectbox(
+#             "Choose a model category:",
+#             options=[
+#                 "Select a category",
+#                 "Diseases Prediction",
+#                 "Finance Models",
+#                 "Fake Predictions",
+#                 "Analyzer Models",
+#                 "Algorithm Master"
+#             ],
+#             index=0
+#         )
 
-    # Content display based on selection
-    if selected_option != "Select a category":
-        st.markdown("---")
+#     # Content display based on selection
+#     if selected_option != "Select a category":
+#         st.markdown("---")
 
-        if selected_option == "Diseases Prediction":
-            st.header("🦠 Diseases Prediction Models")
-            # st.markdown("<h1 style='text-align: center; text-decoration: underline;'>🦠 Diseases Prediction Models</h1>", unsafe_allow_html=True)
-            with open("text_files/disease_ref.txt", "r") as file:
-                info = file.read()
-                st.write("")
-                st.write(info)
-        elif selected_option == "Finance Models":
-            st.header("💰 Finance Models")
-            with open("text_files/Finance_ref.txt", "r") as file:
-                info = file.read()
-                st.write("")
-                st.write(info)
+#         if selected_option == "Diseases Prediction":
+#             st.header("🦠 Diseases Prediction Models")
+#             # st.markdown("<h1 style='text-align: center; text-decoration: underline;'>🦠 Diseases Prediction Models</h1>", unsafe_allow_html=True)
+#             with open("text_files/disease_ref.txt", "r") as file:
+#                 info = file.read()
+#                 st.write("")
+#                 st.write(info)
+#         elif selected_option == "Finance Models":
+#             st.header("💰 Finance Models")
+#             with open("text_files/Finance_ref.txt", "r") as file:
+#                 info = file.read()
+#                 st.write("")
+#                 st.write(info)
 
-        elif selected_option == "Fake Predictions":
-            st.header("🕵️ Fake Prediction Detectors")
-            with open("text_files/Fake_Predictions.txt", "r") as file:
-                info = file.read()
-                st.write("")
-                st.write(info)
+#         elif selected_option == "Fake Predictions":
+#             st.header("🕵️ Fake Prediction Detectors")
+#             with open("text_files/Fake_Predictions.txt", "r") as file:
+#                 info = file.read()
+#                 st.write("")
+#                 st.write(info)
 
-        elif selected_option == "Analyzer Models":
-            st.header("📊 Analyzer Models")
-            with open("text_files/Analyzer_Models.txt", "r") as file:
-                info = file.read()
-                st.write("")
-                st.write(info)
+#         elif selected_option == "Analyzer Models":
+#             st.header("📊 Analyzer Models")
+#             with open("text_files/Analyzer_Models.txt", "r") as file:
+#                 info = file.read()
+#                 st.write("")
+#                 st.write(info)
 
-        elif selected_option == "Algorithm Master":
-            st.header("⚙️ Algorithm Master")
-            with open("text_files/Algorithm_Master.txt", "r") as file:
-                info = file.read()
-                st.write("")
-                st.write(info)
+#         elif selected_option == "Algorithm Master":
+#             st.header("⚙️ Algorithm Master")
+#             with open("text_files/Algorithm_Master.txt", "r") as file:
+#                 info = file.read()
+#                 st.write("")
+#                 st.write(info)
 
 
 st.markdown(
