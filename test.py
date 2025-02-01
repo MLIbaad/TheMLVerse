@@ -134,7 +134,7 @@ with (st.sidebar):
     selected_section = option_menu(
         menu_title="𝕋𝕙𝕖 𝕄𝕃 𝕍𝕖𝕣𝕤𝕖",
         options=["About Project", "Diseases Prediction", "Finance Models", "Fake Predictions", "Analyzer Models",
-                  "Algorithm Master"]
+                  "Algorithm Master"],
                  #"REFERENCE"],
         icons=["book", "book", "book", "book", "book", "book"],
         menu_icon="list-task",
