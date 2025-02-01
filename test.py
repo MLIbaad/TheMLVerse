@@ -136,7 +136,7 @@ with (st.sidebar):
         options=["About Project", "Diseases Prediction", "Finance Models", "Fake Predictions", "Analyzer Models",
                   "Algorithm Master"]
                  #"REFERENCE"],
-        icons=["book", "book", "book", "book", "book", "book","list"],
+        icons=["book", "book", "book", "book", "book", "book"],
         menu_icon="list-task",
         default_index=0
     )
