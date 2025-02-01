@@ -1,0 +1,12 @@
+#Email Spam Classification System - Instructions
+---
+Welcome to the Email Spam Classification Application! This system will help you classify emails as either Spam or Not Spam.
+
+To test the system, you can enter an example of a spam email. For instance, you can use the following example:
+
+-"XXXMobileMovieClub: To use your credit, click the WAP link in the next txt message or click here>> http://wap.xxxmobilemovieclub.com?n=QJKGIGHJJGCBL"
+
+Just copy and paste the text into the input area and click "Process" to see if the email is classified as spam or not.
+
+Enjoy using the application!
+---
