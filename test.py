@@ -637,7 +637,7 @@ elif selected_section == "Finance Models":
             )
 
 
-    elif Finance_model_selection == "Stocks Visual Analyzer":
+        elif Finance_model_selection == "Stocks Visual Analyzer":
         import pandas as pd
         import streamlit as st
         import matplotlib.pyplot as plt
