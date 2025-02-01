@@ -25,7 +25,7 @@ def load_models():
         "credit_fraud": pickle.load(open('saved_models/Credit_card_model.pkl', 'rb')),
     }
 
-# Load models ONCE
+
 if "models" not in st.session_state:
     st.session_state.models = load_models()
 
@@ -128,6 +128,7 @@ parkinsons_clinics = [
 
 
 
+
 with (st.sidebar):
 
     selected_section = option_menu(
@@ -186,6 +187,8 @@ with (st.sidebar):
         )
 
 # Display content based on sidebar selection
+
+
 if selected_section == "About Project":
     st.markdown("<h1 style='text-align: center;font_size : 22px ;text-decoration: underline ; '>Ｔｈｅ ＭＬ Ｖｅｒｓｅ</h1>",
                 unsafe_allow_html=True)
@@ -759,29 +762,23 @@ elif selected_section == "Finance Models":
                 st.subheader('Stock Data')
                 st.write(data)
 
-                # Prepare the data for linear regression
                 data['Date'] = data.index
-                data['Date'] = pd.to_datetime(data['Date']).map(pd.Timestamp.timestamp)  # Convert to timestamp
-                X = data[['Date']]  # Features
-                y = data['Close']  # Target variable
+                data['Date'] = pd.to_datetime(data['Date']).map(pd.Timestamp.timestamp)
+                X = data[['Date']]
+                y = data['Close']
 
-                # Split the data into training and testing sets
                 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-                # Create and train the model
                 model = LinearRegression()
                 model.fit(X_train, y_train)
 
-                # Make predictions
                 predictions = model.predict(X_test)
 
-                # Plot the results
                 st.subheader('Predictions vs Actual Prices')
                 fig, ax = plt.subplots(figsize=(12, 6))  # Set figure size
                 ax.plot(y_test.index, y_test, label='Actual Prices', color='blue', linewidth=2)
                 ax.plot(y_test.index, predictions, label='Predicted Prices', color='red', linestyle='--', linewidth=2)
 
-                # Formatting the plot
                 ax.set_xlabel('Date', fontsize=14)
                 ax.set_ylabel('Price', fontsize=14)
                 ax.set_title(f'Stock Price Prediction for {stock}', fontsize=16)
@@ -1354,6 +1351,9 @@ elif selected_section == "Analyzer Models":
                 st_profile_report(pr)
 
 
+
+
+
 elif selected_section == "Algorithm Master":
     if Algorithm_selection == "AutoML":
         st.markdown(
@@ -1480,12 +1480,13 @@ elif selected_section == "Algorithm Master":
                 st.write(df.head(5))
 
                 build_model(df)
-
     elif Algorithm_selection == "No Code Machine Learning Trainer":
 
         st.markdown(
             "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🤖 No Code ML Model Training 🤖</h1>",
-            unsafe_allow_html=True)
+            unsafe_allow_html=True
+
+        )
         from sklearn.linear_model import LogisticRegression
         from sklearn.svm import SVC
         from sklearn.ensemble import RandomForestClassifier
@@ -1502,8 +1503,10 @@ elif selected_section == "Algorithm Master":
         from sklearn.neural_network import MLPClassifier
         from sklearn.ensemble import BaggingClassifier
         from catboost import CatBoostClassifier
+        from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler, MinMaxScaler
+        from sklearn.impute import SimpleImputer
         import io
-        from ml_utility import preprocess_data, evaluate_model
+        import pickle
 
         with open('text_files/caution.txt', 'r') as file:
             caution = file.read()
@@ -1519,15 +1522,13 @@ elif selected_section == "Algorithm Master":
 
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
-
             st.write("### Preview of Uploaded Dataset")
             st.dataframe(df.head())
-
             col1, col2, col3, col4 = st.columns(4)
-
             scaler_type_list = ["standard", "minmax"]
 
-            # Dictionary made with gpt
+            # Dictionary of models
+
             model_dictionary = {
                 "Logistic Regression": LogisticRegression(),
                 "Support Vector Classifier": SVC(),
@@ -1545,6 +1546,7 @@ elif selected_section == "Algorithm Master":
                 "Multi-Layer Perceptron Classifier": MLPClassifier(),
                 "Bagging Classifier": BaggingClassifier(),
                 "CatBoost Classifier": CatBoostClassifier(verbose=0)
+
             }
 
             with col1:
@@ -1558,23 +1560,46 @@ elif selected_section == "Algorithm Master":
 
             if st.button("Train the Model"):
                 try:
-                    X_train, X_test, y_train, y_test = preprocess_data(df, target_column, scaler_type)
+                    X = df.drop(columns=[target_column])
+                    y = df[target_column]
+                    imputer = SimpleImputer(strategy="most_frequent")
+
+                    X = pd.DataFrame(imputer.fit_transform(X), columns=X.columns)
+                    y = pd.Series(imputer.fit_transform(y.values.reshape(-1, 1)).flatten())
+                    if y.dtype == "object":
+                        le = LabelEncoder()
+                        y = le.fit_transform(y)
+
+                    categorical_cols = X.select_dtypes(include=["object"]).columns
+
+                    if len(categorical_cols) > 0:
+                        X = pd.get_dummies(X, columns=categorical_cols, drop_first=True)
+                    if scaler_type == "standard":
+                        scaler = StandardScaler()
+                    else:
+                        scaler = MinMaxScaler()
+                    X = pd.DataFrame(scaler.fit_transform(X), columns=X.columns)
+
+                    from sklearn.model_selection import train_test_split
+
+                    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
                     st.write(f"Training data shape: {X_train.shape}, Test data shape: {X_test.shape}")
 
                     model_to_be_trained = model_dictionary[selected_model]
                     model_to_be_trained.fit(X_train, y_train)
+                    from sklearn.metrics import accuracy_score
 
-                    # Evaluating using accuracy
-                    accuracy = evaluate_model(model_to_be_trained, X_test, y_test)
+                    y_pred = model_to_be_trained.predict(X_test)
+                    accuracy = accuracy_score(y_test, y_pred)
                     st.success(f"Test Accuracy: {accuracy:.2f}")
-
-                    # sving the model
                     model_buffer = io.BytesIO()
                     pickle.dump(model_to_be_trained, model_buffer)
                     model_buffer.seek(0)
 
                     if not model_name.strip():
                         model_name = "trained_model"
+
                     st.download_button(
                         label="Download Trained Model",
                         data=model_buffer,
@@ -1582,11 +1607,10 @@ elif selected_section == "Algorithm Master":
                         mime="application/octet-stream"
                     )
                 except Exception as e:
-                    st.error(f"An error occurred: {e}")
+                    st.error(f"An error occurred: {str(e)}")
+
         else:
             st.info("Please upload a CSV file to get started.")
-
-
 
 
 elif selected_section == "REFERENCE":
@@ -1594,7 +1618,8 @@ elif selected_section == "REFERENCE":
                 unsafe_allow_html=True)
 
     st.markdown(
-        "<h1 style='text-align: center;'>Welcome to the Model Reference App! Select a category from the dropdown below to view its associated models and reference information.</h1>",
+        "<h1 style='text-align: center;'>"
+        "Welcome to the Model Reference App! Select a category from the dropdown below to view its associated models and reference information.</h1>",
         unsafe_allow_html=True)
 
     # Center the selectbox using columns
@@ -1668,38 +1693,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
