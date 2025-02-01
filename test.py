@@ -1377,7 +1377,7 @@ elif selected_section == "Algorithm Master":
 
 
         def build_model(df):
-            df = df.loc[:100]
+            # df = df.loc[:100]
             X = df.iloc[:, :-1]
             Y = df.iloc[:, -1]
 
