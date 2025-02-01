@@ -128,6 +128,7 @@ parkinsons_clinics = [
 
 
 
+
 with (st.sidebar):
 
     selected_section = option_menu(
@@ -163,7 +164,7 @@ with (st.sidebar):
         Fake_Models = option_menu(
             menu_title="Choose Model",
             options=["Fake News Prediction", "Credit Card Fraud Detection", "Spam Mail Detection"],
-            icons=["bar-chart", "bar-chart-line","bar-chart-line"],
+            icons=["bar-chart", "bar-chart-line"],
             menu_icon="bar-chart-line",
             default_index=0
         )
@@ -637,7 +638,7 @@ elif selected_section == "Finance Models":
             )
 
 
-        elif Finance_model_selection == "Stocks Visual Analyzer":
+    elif Finance_model_selection == "Stocks Visual Analyzer":
         import pandas as pd
         import streamlit as st
         import matplotlib.pyplot as plt
@@ -838,6 +839,7 @@ elif selected_section == "Finance Models":
                 st.write(f'Mean Absolute Error: {np.mean(np.abs(predictions - y_test)):.2f}')
             else:
                 st.error("No data found for the given stock symbol and date range.")
+
 
     elif Finance_model_selection == "Bank Loan Prediction":
         st.markdown(
@@ -1273,7 +1275,7 @@ elif selected_section == "Fake Predictions":
                         </h2></div></div>
                         """,
                     unsafe_allow_html=True)
-                        #speak("This is Not A Spam Email")
+                        # speak("This is Not A Spam Email")
                     else:
                         st.markdown(
                             f"""
@@ -1289,7 +1291,7 @@ elif selected_section == "Fake Predictions":
                                 """,
                             unsafe_allow_html=True
                         )
-                        #speak("This is A Spam Email")
+                        # speak("This is A Spam Email")
 
 
         main()
@@ -1774,6 +1776,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
 
