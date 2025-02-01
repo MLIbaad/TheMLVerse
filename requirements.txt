@@ -21,4 +21,4 @@ sentencepiece==0.2.0
 tokenizers==0.21.0
 streamlit-option-menu==0.4.0
 streamlit-pandas-profiling==0.1.3
-pywin32==308
+pyttsx3==2.98
