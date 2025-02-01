@@ -1360,7 +1360,8 @@ elif selected_section == "Analyzer Models":
 elif selected_section == "Algorithm Master":
     if Algorithm_selection == "AutoML":
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>The Machine Learning Algorithm Comparison App</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>"
+            "The Machine Learning Algorithm Comparison App</h1>",
             unsafe_allow_html=True)
         import seaborn as sns
         import base64
@@ -1369,7 +1370,8 @@ elif selected_section == "Algorithm Master":
         from sklearn.datasets import load_diabetes
 
         st.markdown(
-            "<h3 style='text-align: center;'>In this implementation, the [lazypredict] library is used for building several machine learning models at once.</h3>",
+            "<h3 style='text-align: center;'>"
+            "In this implementation, the [lazypredict] library is used for building several machine learning models at once.</h3>",
             unsafe_allow_html=True)
         with open('text_files/automl_abt.txt', 'r') as file:
             info = file.read()
@@ -1481,8 +1483,7 @@ elif selected_section == "Algorithm Master":
                 st.write(df.head(5))
 
                 build_model(df)
-
-        elif Algorithm_selection == "No Code Machine Learning Trainer":
+    elif Algorithm_selection == "No Code Machine Learning Trainer":
 
         st.markdown(
             "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🤖 No Code ML Model Training 🤖</h1>",
