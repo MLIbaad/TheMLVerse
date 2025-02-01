@@ -1358,131 +1358,131 @@ elif selected_section == "Analyzer Models":
 
 
 elif selected_section == "Algorithm Master":
-    if Algorithm_selection == "AutoML":
-        st.markdown(
+        if Algorithm_selection == "AutoML":
+            st.markdown(
             "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>"
             "The Machine Learning Algorithm Comparison App</h1>",
             unsafe_allow_html=True)
-        import seaborn as sns
-        import base64
-        from lazypredict.Supervised import LazyRegressor
-        from sklearn.model_selection import train_test_split
-        from sklearn.datasets import load_diabetes
-
-        st.markdown(
-            "<h3 style='text-align: center;'>"
-            "In this implementation, the [lazypredict] library is used for building several machine learning models at once.</h3>",
-            unsafe_allow_html=True)
-        with open('text_files/automl_abt.txt', 'r') as file:
-            info = file.read()
-            st.write(info)
-
-
-        def build_model(df):
-            # df = df.loc[:100]
-            X = df.iloc[:, :-1]
-            Y = df.iloc[:, -1]
-
-            st.markdown('**1.2. Dataset dimension**')
-            st.write('X')
-            st.info(X.shape)
-            st.write('Y')
-            st.info(Y.shape)
-
-            st.markdown('**1.3. Variable details**:')
-            st.write('X variable (first 20 are shown)')
-            st.info(list(X.columns[:20]))
-            st.write('Y variable')
-            st.info(Y.name)
-
-            X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=split_size, random_state=seed_number)
-            reg = LazyRegressor(verbose=0, ignore_warnings=False, custom_metric=None)
-            models_train, predictions_train = reg.fit(X_train, X_train, Y_train, Y_train)
-            models_test, predictions_test = reg.fit(X_train, X_test, Y_train, Y_test)
-
-            st.subheader('2. Table of Model Performance')
-
-            st.markdown("<h5 style='text-align: left; text-decoration: underline;'>Training set</h5>",
-                        unsafe_allow_html=True)
-
-            st.write(predictions_train)
-            st.markdown(filedownload(predictions_train, 'training.csv'), unsafe_allow_html=True)
-
-            st.markdown("<h5 style='text-align: left; text-decoration: underline;'>Testing set</h5>",
-                        unsafe_allow_html=True)
-            st.write(predictions_test)
-            st.markdown(filedownload(predictions_test, 'test.csv'), unsafe_allow_html=True)
-
-            st.subheader('3. Plot of Model Performance (Test set)')
-
-            sns.set_theme(style="whitegrid")
-
-            predictions_test["R-Squared"] = [0 if i < 0 else i for i in predictions_test["R-Squared"]]
-            plt.figure(figsize=(12, 8))
-            ax1 = sns.barplot(y=predictions_test.index, x="R-Squared", data=predictions_test, palette='viridis')
-            ax1.set_title('R-Squared Values of Models', fontsize=16)
-            ax1.set_xlabel('R-Squared', fontsize=14)
-            ax1.set_ylabel('Models', fontsize=14)
-            ax1.set_xlim(0, 1)
-            plt.tight_layout()
-            st.pyplot(plt)
-
-            predictions_test["RMSE"] = [50 if i > 50 else i for i in predictions_test["RMSE"]]
-            plt.figure(figsize=(10, 6))
-            ax2 = sns.barplot(x=predictions_test.index, y="RMSE", data=predictions_test, palette='viridis')
-            ax2.set_title('RMSE Values of Models', fontsize=16)
-            ax2.set_xlabel('Models', fontsize=9)
-            ax2.set_ylabel('RMSE', fontsize=14)
-            plt.xticks(rotation=90)
-            st.pyplot(plt)
-
-            predictions_test["Time Taken"] = [0 if i < 0 else i for i in predictions_test["Time Taken"]]
-            plt.figure(figsize=(10, 6))
-            ax3 = sns.barplot(x=predictions_test.index, y="Time Taken", data=predictions_test, palette='viridis')
-            ax3.set_title('Calculation Time of Models', fontsize=16)
-            ax3.set_xlabel('Models', fontsize=14)
-            ax3.set_ylabel('Time Taken (seconds)', fontsize=14)
-            plt.xticks(rotation=90)
-            st.pyplot(plt)
-
-
-        def filedownload(df, filename):
-            csv = df.to_csv(index=False)
-            b64 = base64.b64encode(csv.encode()).decode()  # bytes conversions
-            href = f'<a href="data:file/csv;base64,{b64}" download={filename}>Download {filename} File</a>'
-            return href
-
-
-        st.header('1. Upload your CSV data')
-        (uploaded_file) = st.file_uploader("Upload your input CSV file", type=["csv"])
-        st.markdown("""
-        [Example CSV input file](https://raw.githubusercontent.com/dataprofessor/data/master/delaney_solubility_with_descriptors.csv)
-        """)
-
-        st.header('2. Set Parameters')
-        split_size = st.slider('Data split ratio (% for Training Set)', 10, 90, 80, 5)
-        seed_number = st.slider('Set the random seed number', 1, 100, 42, 1)
-
-        st.subheader('1. Dataset')
-
-        if uploaded_file is not None:
-            df = pd.read_csv(uploaded_file)
-            st.markdown('**1.1. Glimpse of dataset**')
-            st.write(df)
-            build_model(df)
-        else:
-            st.info('Awaiting for CSV file to be uploaded.')
-            if st.button('Press to use Example Dataset'):
-                # Diabetes dataset
-                diabetes = load_diabetes()
-                X = pd.DataFrame(diabetes.data, columns=diabetes.feature_names)
-                Y = pd.Series(diabetes.target, name='response')
-                df = pd.concat([X, Y], axis=1)
-
-                st.markdown('The Diabetes dataset is used as the example.')
-                st.write(df.head(5))
-
+            import seaborn as sns
+            import base64
+            from lazypredict.Supervised import LazyRegressor
+            from sklearn.model_selection import train_test_split
+            from sklearn.datasets import load_diabetes
+    
+            st.markdown(
+                "<h3 style='text-align: center;'>"
+                "In this implementation, the [lazypredict] library is used for building several machine learning models at once.</h3>",
+                unsafe_allow_html=True)
+            with open('text_files/automl_abt.txt', 'r') as file:
+                info = file.read()
+                st.write(info)
+    
+    
+            def build_model(df):
+                # df = df.loc[:100]
+                X = df.iloc[:, :-1]
+                Y = df.iloc[:, -1]
+    
+                st.markdown('**1.2. Dataset dimension**')
+                st.write('X')
+                st.info(X.shape)
+                st.write('Y')
+                st.info(Y.shape)
+    
+                st.markdown('**1.3. Variable details**:')
+                st.write('X variable (first 20 are shown)')
+                st.info(list(X.columns[:20]))
+                st.write('Y variable')
+                st.info(Y.name)
+    
+                X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=split_size, random_state=seed_number)
+                reg = LazyRegressor(verbose=0, ignore_warnings=False, custom_metric=None)
+                models_train, predictions_train = reg.fit(X_train, X_train, Y_train, Y_train)
+                models_test, predictions_test = reg.fit(X_train, X_test, Y_train, Y_test)
+    
+                st.subheader('2. Table of Model Performance')
+    
+                st.markdown("<h5 style='text-align: left; text-decoration: underline;'>Training set</h5>",
+                            unsafe_allow_html=True)
+    
+                st.write(predictions_train)
+                st.markdown(filedownload(predictions_train, 'training.csv'), unsafe_allow_html=True)
+    
+                st.markdown("<h5 style='text-align: left; text-decoration: underline;'>Testing set</h5>",
+                            unsafe_allow_html=True)
+                st.write(predictions_test)
+                st.markdown(filedownload(predictions_test, 'test.csv'), unsafe_allow_html=True)
+    
+                st.subheader('3. Plot of Model Performance (Test set)')
+    
+                sns.set_theme(style="whitegrid")
+    
+                predictions_test["R-Squared"] = [0 if i < 0 else i for i in predictions_test["R-Squared"]]
+                plt.figure(figsize=(12, 8))
+                ax1 = sns.barplot(y=predictions_test.index, x="R-Squared", data=predictions_test, palette='viridis')
+                ax1.set_title('R-Squared Values of Models', fontsize=16)
+                ax1.set_xlabel('R-Squared', fontsize=14)
+                ax1.set_ylabel('Models', fontsize=14)
+                ax1.set_xlim(0, 1)
+                plt.tight_layout()
+                st.pyplot(plt)
+    
+                predictions_test["RMSE"] = [50 if i > 50 else i for i in predictions_test["RMSE"]]
+                plt.figure(figsize=(10, 6))
+                ax2 = sns.barplot(x=predictions_test.index, y="RMSE", data=predictions_test, palette='viridis')
+                ax2.set_title('RMSE Values of Models', fontsize=16)
+                ax2.set_xlabel('Models', fontsize=9)
+                ax2.set_ylabel('RMSE', fontsize=14)
+                plt.xticks(rotation=90)
+                st.pyplot(plt)
+    
+                predictions_test["Time Taken"] = [0 if i < 0 else i for i in predictions_test["Time Taken"]]
+                plt.figure(figsize=(10, 6))
+                ax3 = sns.barplot(x=predictions_test.index, y="Time Taken", data=predictions_test, palette='viridis')
+                ax3.set_title('Calculation Time of Models', fontsize=16)
+                ax3.set_xlabel('Models', fontsize=14)
+                ax3.set_ylabel('Time Taken (seconds)', fontsize=14)
+                plt.xticks(rotation=90)
+                st.pyplot(plt)
+    
+    
+            def filedownload(df, filename):
+                csv = df.to_csv(index=False)
+                b64 = base64.b64encode(csv.encode()).decode()  # bytes conversions
+                href = f'<a href="data:file/csv;base64,{b64}" download={filename}>Download {filename} File</a>'
+                return href
+    
+    
+            st.header('1. Upload your CSV data')
+            (uploaded_file) = st.file_uploader("Upload your input CSV file", type=["csv"])
+            st.markdown("""
+            [Example CSV input file](https://raw.githubusercontent.com/dataprofessor/data/master/delaney_solubility_with_descriptors.csv)
+            """)
+    
+            st.header('2. Set Parameters')
+            split_size = st.slider('Data split ratio (% for Training Set)', 10, 90, 80, 5)
+            seed_number = st.slider('Set the random seed number', 1, 100, 42, 1)
+    
+            st.subheader('1. Dataset')
+    
+            if uploaded_file is not None:
+                df = pd.read_csv(uploaded_file)
+                st.markdown('**1.1. Glimpse of dataset**')
+                st.write(df)
                 build_model(df)
+            else:
+                st.info('Awaiting for CSV file to be uploaded.')
+                if st.button('Press to use Example Dataset'):
+                    # Diabetes dataset
+                    diabetes = load_diabetes()
+                    X = pd.DataFrame(diabetes.data, columns=diabetes.feature_names)
+                    Y = pd.Series(diabetes.target, name='response')
+                    df = pd.concat([X, Y], axis=1)
+    
+                    st.markdown('The Diabetes dataset is used as the example.')
+                    st.write(df.head(5))
+    
+                    build_model(df)
     elif Algorithm_selection == "No Code Machine Learning Trainer":
 
         st.markdown(
