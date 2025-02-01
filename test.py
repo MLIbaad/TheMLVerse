@@ -825,7 +825,7 @@ elif selected_section == "Finance Models":
                 st.pyplot(fig_ma)
 
 
-                st.markdown("<h4 style='text-align: center; text-decoration: underline;'>Trading Volume/h4>",unsafe_allow_html=True)
+                st.markdown("<h4 style='text-align: center; text-decoration: underline;'>Trading Volume</h4>",unsafe_allow_html=True)
                 fig_vol, ax_vol = plt.subplots(figsize=(12, 6))
                 ax_vol.bar(data.index, data['Volume'], color='purple', alpha=0.6)
                 ax_vol.set_title(f'Trading Volume Prediction for {stock}', fontsize=16)
@@ -838,7 +838,6 @@ elif selected_section == "Finance Models":
                 st.write(f'Mean Absolute Error: {np.mean(np.abs(predictions - y_test)):.2f}')
             else:
                 st.error("No data found for the given stock symbol and date range.")
-
 
     elif Finance_model_selection == "Bank Loan Prediction":
         st.markdown(
