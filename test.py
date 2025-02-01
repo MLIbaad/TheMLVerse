@@ -43,7 +43,6 @@ credit_fraud_model = st.session_state.models["credit_fraud"]
 
 
 
-
 disease_selection = None
 Finance_model_selection = None
 
@@ -134,9 +133,8 @@ with (st.sidebar):
     selected_section = option_menu(
         menu_title="𝕋𝕙𝕖 𝕄𝕃 𝕍𝕖𝕣𝕤𝕖",
         options=["About Project", "Diseases Prediction", "Finance Models", "Fake Predictions", "Analyzer Models",
-                  "Algorithm Master"],
-                 #"REFERENCE"],
-        icons=["book", "book", "book", "book", "book", "book"],
+                 "Algorithm Master","REFERENCE"],
+        icons=["book", "book", "book", "book", "book", "book","list"],
         menu_icon="list-task",
         default_index=0
     )
@@ -164,8 +162,8 @@ with (st.sidebar):
     elif selected_section == "Fake Predictions":
         Fake_Models = option_menu(
             menu_title="Choose Model",
-            options=["Fake News Prediction", "Credit Card Fraud Detection"],
-            icons=["bar-chart", "bar-chart-line"],
+            options=["Fake News Prediction", "Credit Card Fraud Detection", "Spam Mail Detection"],
+            icons=["bar-chart", "bar-chart-line","bar-chart-line"],
             menu_icon="bar-chart-line",
             default_index=0
         )
@@ -640,26 +638,24 @@ elif selected_section == "Finance Models":
 
 
     elif Finance_model_selection == "Stocks Visual Analyzer":
-        st.markdown("<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>💰 STOCKS ANALYZER 💰</h1>",
-                    unsafe_allow_html=True)
-        import plotly.graph_objects as go
         import pandas as pd
+        import streamlit as st
+        import matplotlib.pyplot as plt
+        import plotly.graph_objects as go
         import yfinance as yf
+
+        st.markdown("<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'> STOCKS ANALYZER</h1>",
+                    unsafe_allow_html=True)
+
         st.title("AI-Powered Technical Stock Analysis Dashboard")
-        with open('text_files/caution.txt', 'r') as file:
-            info = file.read()
-            st.write("")
-            st.write(info)
-            st.markdown(
-                "<h4 style='text-align: left; text-decoration: underline;'>User Inputs for Stocks Visual Analyzer : </h4>",
-                unsafe_allow_html=True)
-            st.markdown(
-                "<h4 style='text-align: left;'>To Visualize the Stock Prices, we require the following inputs from the user:</h5>",
-                unsafe_allow_html=True)
-        with open('text_files/stock_V.txt', 'r') as file:
-            info = file.read()
-            st.write("")
-            st.write(info)
+        st.markdown(
+            "<h4 style='text-align: left; text-decoration: underline;'>User Inputs for Stocks Visual Analyzer : </h4>",
+            unsafe_allow_html=True)
+        st.markdown(
+            "<h4 style='text-align: left;'>To Visualize the Stock Prices, we require the following inputs from the user:</h5>",
+            unsafe_allow_html=True)
+
+        # User inputs
         ticker = st.text_input("Enter Stock Ticker (e.g., AAPL):", "AAPL")
         start_date = st.date_input("Start Date", value=pd.to_datetime("2023-01-01"))
         end_date = st.date_input("End Date", value=pd.to_datetime("2024-12-14"))
@@ -673,7 +669,7 @@ elif selected_section == "Finance Models":
         if "stock_data" in st.session_state:
             data = st.session_state["stock_data"]
 
-            # Plot candlestick chart
+            # Create the base candlestick chart
             fig = go.Figure(data=[
                 go.Candlestick(
                     x=data.index,
@@ -681,20 +677,19 @@ elif selected_section == "Finance Models":
                     high=data['High'],
                     low=data['Low'],
                     close=data['Close'],
-                    name="Candlestick"  # Replace "trace 0" with "Candlestick"
+                    name="Candlestick"
                 )
             ])
 
-            # Sidebar: Select technical indicators
-            st.sidebar.subheader("Technical Indicators")
-            indicators = st.sidebar.multiselect(
+            st.subheader("Technical Indicators")
+            indicators = st.multiselect(
                 "Select Indicators:",
                 ["20-Day SMA", "20-Day EMA", "20-Day Bollinger Bands", "VWAP"],
                 default=["20-Day SMA"]
             )
 
 
-            # Helper function to add indicators to the chart
+            # Function to add indicators
             def add_indicator(indicator):
                 if indicator == "20-Day SMA":
                     sma = data['Close'].rolling(window=20).mean()
@@ -714,12 +709,12 @@ elif selected_section == "Finance Models":
                     fig.add_trace(go.Scatter(x=data.index, y=data['VWAP'], mode='lines', name='VWAP'))
 
 
-            # Add selected indicators to the chart
+            # Apply selected indicators
             for indicator in indicators:
                 add_indicator(indicator)
-
             fig.update_layout(xaxis_rangeslider_visible=False)
             st.plotly_chart(fig)
+
 
 
 
@@ -775,9 +770,9 @@ elif selected_section == "Finance Models":
 
                 predictions = model.predict(X_test)
 
-                st.subheader('Predictions vs Actual Prices')
+                st.markdown("<h4 style='text-align: center; text-decoration: underline;'>Predictions vs Actual Prices</h4>",unsafe_allow_html=True)
                 fig, ax = plt.subplots(figsize=(12, 6))  # Set figure size
-                ax.plot(y_test.index, y_test, label='Actual Prices', color='blue', linewidth=2)
+                ax.plot(y_test.index, y_test, label='Actual Prices', color='blue', linestyle='--',linewidth=3)
                 ax.plot(y_test.index, predictions, label='Predicted Prices', color='red', linestyle='--', linewidth=2)
 
                 ax.set_xlabel('Date', fontsize=14)
@@ -792,9 +787,29 @@ elif selected_section == "Finance Models":
                 plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')  # Rotate date labels
 
                 st.pyplot(fig)
+                #
+                st.markdown("<h4 style='text-align: center; text-decoration: underline;'>Predictions vs Actual Prices with Regression Line</h4>",unsafe_allow_html=True)
+                fig, ax = plt.subplots(figsize=(12, 6))
+                ax.scatter(y_test, predictions, label='Actual vs Predicted', color='blue', alpha=0.5)  # Scatter plot
+                reg_model = LinearRegression()
+                reg_model.fit(y_test.values.reshape(-1, 1), predictions)
+                reg_line_x = np.linspace(y_test.min(), y_test.max(), 100)
+                reg_line_y = reg_model.predict(reg_line_x.reshape(-1, 1))
+                ax.plot(reg_line_x, reg_line_y, color='red', linewidth=2, label='Regression Line')
 
-                # Moving Averages
-                st.subheader('Moving Averages')
+                ax.set_xlabel('Actual Prices', fontsize=14)
+                ax.set_ylabel('Predicted Prices', fontsize=14)
+                ax.set_title(f'Stock Price Prediction for {stock}', fontsize=16)
+                ax.legend()
+                ax.grid(True)
+
+                st.pyplot(fig)
+
+
+
+
+                st.markdown("<h4 style='text-align: center; text-decoration: underline;'>Moving Averages</h4>",unsafe_allow_html=True)
+
                 data['MA50'] = data['Close'].rolling(window=50).mean()
                 data['MA200'] = data['Close'].rolling(window=200).mean()
 
@@ -802,18 +817,18 @@ elif selected_section == "Finance Models":
                 ax_ma.plot(data['Close'], label='Close Price', color='blue')
                 ax_ma.plot(data['MA50'], label='50-Day MA', color='orange')
                 ax_ma.plot(data['MA200'], label='200-Day MA', color='green')
-                ax_ma.set_title(f'Moving Averages for {stock}', fontsize=16)
+                ax_ma.set_title(f'Moving Averages Prediction for {stock}', fontsize=16)
                 ax_ma.set_xlabel('Date', fontsize=14)
                 ax_ma.set_ylabel('Price', fontsize=14)
                 ax_ma.legend()
                 ax_ma.grid(True)
                 st.pyplot(fig_ma)
 
-                # Volume Bar Chart
-                st.subheader('Trading Volume')
+
+                st.markdown("<h4 style='text-align: center; text-decoration: underline;'>Trading Volume/h4>",unsafe_allow_html=True)
                 fig_vol, ax_vol = plt.subplots(figsize=(12, 6))
                 ax_vol.bar(data.index, data['Volume'], color='purple', alpha=0.6)
-                ax_vol.set_title(f'Trading Volume for {stock}', fontsize=16)
+                ax_vol.set_title(f'Trading Volume Prediction for {stock}', fontsize=16)
                 ax_vol.set_xlabel('Date', fontsize=14)
                 ax_vol.set_ylabel('Volume', fontsize=14)
                 st.pyplot(fig_vol)
@@ -1189,6 +1204,86 @@ elif selected_section == "Fake Predictions":
                     st.error('Please enter valid numeric values.')
 
 
+
+    elif Fake_Models == "Spam Mail Detection":
+        st.markdown(
+            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🕵️ SPAM MAIL DETECTION 🕵️</h1>",
+            unsafe_allow_html=True)
+        from win32com.client import Dispatch
+        import pythoncom
+        with open("text_files/caution.txt", "r") as file:
+            info = file.read()
+            st.write("")
+            st.write(info)
+        with open('text_files/email_spam.txt', 'r') as file:
+            info = file.read()
+            st.write("")
+            st.write(info)
+
+        def speak(text):
+            pythoncom.CoInitialize()
+            speak = Dispatch(("SAPI.SpVoice"))
+            speak.Speak(text)
+
+
+        model = pickle.load(open('spam.pkl', 'rb'))
+        cv = pickle.load(open('vectorizer.pkl', 'rb'))
+
+
+        def main():
+            st.title("Email Spam Classification Application")
+            st.write("Built with Streamlit & Python")
+            activites = ["Classification", "About"]
+            choices = st.selectbox("Select Activities", activites)
+
+            if choices == "Classification":
+                st.subheader("Classification")
+                msg = st.text_area("Enter a text")
+
+                if st.button("Process"):
+                    print(msg)
+                    print(type(msg))
+                    data = [msg]
+                    print(data)
+                    vec = cv.transform(data).toarray()
+                    result = model.predict(vec)
+
+                    if result[0] == 0:
+                        st.markdown(
+                            f"""
+                            <div style='
+                            text-align: center; border: 3px solid #6D28D9; border-radius: 15px; padding: 25px; background: linear-gradient(145deg, #4C1D95, #5B21B6); box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Bold Addict", sans-serif; position: relative; overflow: hidden; transform: perspective(1000px);'><div style='
+                            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+                            background: radial-gradient(circle at center, rgba(109, 40, 217, 0.1) 0%, transparent 70%);
+                            opacity: 0.5; z-index: 1;'></div><div style='position: relative; z-index: 2; transform: rotateX(5deg);'>
+                            <h2 style='color: #E9D5FF; margin: 0; font-size: 34px; font-weight: 800;text-shadow: 3px 3px 6px rgba(0,0,0,0.3); letter-spacing: 3px;'>
+                            This is Not A Spam Email
+                            </h2></div></div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+                        speak("This is Not A Spam Email")
+                    else:
+                        st.markdown(
+                            f"""
+                            <div style='
+                            text-align: center; border: 3px solid #6D28D9; border-radius: 15px; padding: 25px; background: linear-gradient(145deg, #4C1D95, #5B21B6); box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Bold Addict", sans-serif; position: relative; overflow: hidden; transform: perspective(1000px);'><div style='
+                            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+                            background: radial-gradient(circle at center, rgba(109, 40, 217, 0.1) 0%, transparent 70%);
+                            opacity: 0.5; z-index: 1;'></div><div style='position: relative; z-index: 2; transform: rotateX(5deg);'>
+                            <h2 style='color: #E9D5FF; margin: 0; font-size: 34px; font-weight: 800;text-shadow: 3px 3px 6px rgba(0,0,0,0.3); letter-spacing: 3px;'>
+                            This is A Spam Email
+                            </h2></div></div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+                        speak("This is A Spam Email")
+        main()
+
+
+
 elif selected_section == "Analyzer Models":
     if Analyzer_selection == "Simple Sentiment Analysis":
         st.markdown(
@@ -1377,7 +1472,7 @@ elif selected_section == "Algorithm Master":
 
 
         def build_model(df):
-            # df = df.loc[:100]
+            df = df.loc[:200]
             X = df.iloc[:, :-1]
             Y = df.iloc[:, -1]
 
@@ -1481,13 +1576,12 @@ elif selected_section == "Algorithm Master":
                 st.write(df.head(5))
 
                 build_model(df)
+
     elif Algorithm_selection == "No Code Machine Learning Trainer":
 
         st.markdown(
             "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🤖 No Code ML Model Training 🤖</h1>",
-            unsafe_allow_html=True
-
-        )
+            unsafe_allow_html=True)
         from sklearn.linear_model import LogisticRegression
         from sklearn.svm import SVC
         from sklearn.ensemble import RandomForestClassifier
@@ -1504,10 +1598,8 @@ elif selected_section == "Algorithm Master":
         from sklearn.neural_network import MLPClassifier
         from sklearn.ensemble import BaggingClassifier
         from catboost import CatBoostClassifier
-        from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler, MinMaxScaler
-        from sklearn.impute import SimpleImputer
         import io
-        import pickle
+        from ml_utility import preprocess_data, evaluate_model
 
         with open('text_files/caution.txt', 'r') as file:
             caution = file.read()
@@ -1523,13 +1615,15 @@ elif selected_section == "Algorithm Master":
 
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
+
             st.write("### Preview of Uploaded Dataset")
             st.dataframe(df.head())
+
             col1, col2, col3, col4 = st.columns(4)
+
             scaler_type_list = ["standard", "minmax"]
 
-            # Dictionary of models
-
+            # Dictionary made with gpt
             model_dictionary = {
                 "Logistic Regression": LogisticRegression(),
                 "Support Vector Classifier": SVC(),
@@ -1547,7 +1641,6 @@ elif selected_section == "Algorithm Master":
                 "Multi-Layer Perceptron Classifier": MLPClassifier(),
                 "Bagging Classifier": BaggingClassifier(),
                 "CatBoost Classifier": CatBoostClassifier(verbose=0)
-
             }
 
             with col1:
@@ -1561,46 +1654,23 @@ elif selected_section == "Algorithm Master":
 
             if st.button("Train the Model"):
                 try:
-                    X = df.drop(columns=[target_column])
-                    y = df[target_column]
-                    imputer = SimpleImputer(strategy="most_frequent")
-
-                    X = pd.DataFrame(imputer.fit_transform(X), columns=X.columns)
-                    y = pd.Series(imputer.fit_transform(y.values.reshape(-1, 1)).flatten())
-                    if y.dtype == "object":
-                        le = LabelEncoder()
-                        y = le.fit_transform(y)
-
-                    categorical_cols = X.select_dtypes(include=["object"]).columns
-
-                    if len(categorical_cols) > 0:
-                        X = pd.get_dummies(X, columns=categorical_cols, drop_first=True)
-                    if scaler_type == "standard":
-                        scaler = StandardScaler()
-                    else:
-                        scaler = MinMaxScaler()
-                    X = pd.DataFrame(scaler.fit_transform(X), columns=X.columns)
-
-                    from sklearn.model_selection import train_test_split
-
-                    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
+                    X_train, X_test, y_train, y_test = preprocess_data(df, target_column, scaler_type)
                     st.write(f"Training data shape: {X_train.shape}, Test data shape: {X_test.shape}")
 
                     model_to_be_trained = model_dictionary[selected_model]
                     model_to_be_trained.fit(X_train, y_train)
-                    from sklearn.metrics import accuracy_score
 
-                    y_pred = model_to_be_trained.predict(X_test)
-                    accuracy = accuracy_score(y_test, y_pred)
+                    # Evaluating using accuracy
+                    accuracy = evaluate_model(model_to_be_trained, X_test, y_test)
                     st.success(f"Test Accuracy: {accuracy:.2f}")
+
+                    # sving the model
                     model_buffer = io.BytesIO()
                     pickle.dump(model_to_be_trained, model_buffer)
                     model_buffer.seek(0)
 
                     if not model_name.strip():
                         model_name = "trained_model"
-
                     st.download_button(
                         label="Download Trained Model",
                         data=model_buffer,
@@ -1608,75 +1678,73 @@ elif selected_section == "Algorithm Master":
                         mime="application/octet-stream"
                     )
                 except Exception as e:
-                    st.error(f"An error occurred: {str(e)}")
-
+                    st.error(f"An error occurred: {e}")
         else:
             st.info("Please upload a CSV file to get started.")
 
+elif selected_section == "REFERENCE":
+    st.markdown("<h1 style='text-align: center; text-decoration: underline; color:red;'>Model Reference Center</h1>",
+                unsafe_allow_html=True)
 
-# elif selected_section == "REFERENCE":
-#     st.markdown("<h1 style='text-align: center; text-decoration: underline; color:red;'>Model Reference Center</h1>",
-#                 unsafe_allow_html=True)
+    st.markdown(
+        "<h1 style='text-align: center;'>"
+        "Welcome to the Model Reference App! Select a category from the dropdown below to view its associated models and reference information.</h1>",
+        unsafe_allow_html=True)
 
-#     st.markdown(
-#         "<h1 style='text-align: center;'>"
-#         "Welcome to the Model Reference App! Select a category from the dropdown below to view its associated models and reference information.</h1>",
-#         unsafe_allow_html=True)
+    # Center the selectbox using columns
+    col1, col2, col3 = st.columns([1, 3, 1])
+    with col2:
+        selected_option = st.selectbox(
+            "Choose a model category:",
+            options=[
+                "Select a category",
+                "Diseases Prediction",
+                "Finance Models",
+                "Fake Predictions",
+                "Analyzer Models",
+                "Algorithm Master"
+            ],
+            index=0
+        )
 
-#     # Center the selectbox using columns
-#     col1, col2, col3 = st.columns([1, 3, 1])
-#     with col2:
-#         selected_option = st.selectbox(
-#             "Choose a model category:",
-#             options=[
-#                 "Select a category",
-#                 "Diseases Prediction",
-#                 "Finance Models",
-#                 "Fake Predictions",
-#                 "Analyzer Models",
-#                 "Algorithm Master"
-#             ],
-#             index=0
-#         )
+    # Content display based on selection
+    if selected_option != "Select a category":
+        st.markdown("---")
 
-#     # Content display based on selection
-#     if selected_option != "Select a category":
-#         st.markdown("---")
+        if selected_option == "Diseases Prediction":
+            st.header("🦠 Diseases Prediction Models")
+            # st.markdown("<h1 style='text-align: center; text-decoration: underline;'>🦠 Diseases Prediction Models</h1>", unsafe_allow_html=True)
+            with open("text_files/disease_ref.txt", "r") as file:
+                info = file.read()
+                st.write("")
+                st.write(info)
+        elif selected_option == "Finance Models":
+            st.header("💰 Finance Models")
+            with open("text_files/Finance_ref.txt", "r") as file:
+                info = file.read()
+                st.write("")
+                st.write(info)
 
-#         if selected_option == "Diseases Prediction":
-#             st.header("🦠 Diseases Prediction Models")
-#             # st.markdown("<h1 style='text-align: center; text-decoration: underline;'>🦠 Diseases Prediction Models</h1>", unsafe_allow_html=True)
-#             with open("text_files/disease_ref.txt", "r") as file:
-#                 info = file.read()
-#                 st.write("")
-#                 st.write(info)
-#         elif selected_option == "Finance Models":
-#             st.header("💰 Finance Models")
-#             with open("text_files/Finance_ref.txt", "r") as file:
-#                 info = file.read()
-#                 st.write("")
-#                 st.write(info)
+        elif selected_option == "Fake Predictions":
+            st.header("🕵️ Fake Prediction Detectors")
+            with open("text_files/Fake_Predictions.txt", "r") as file:
+                info = file.read()
+                st.write("")
+                st.write(info)
 
-#         elif selected_option == "Fake Predictions":
-#             st.header("🕵️ Fake Prediction Detectors")
-#             with open("text_files/Fake_Predictions.txt", "r") as file:
-#                 info = file.read()
-#                 st.write("")
-#                 st.write(info)
+        elif selected_option == "Analyzer Models":
+            st.header("📊 Analyzer Models")
+            with open("text_files/Analyzer_Models.txt", "r") as file:
+                info = file.read()
+                st.write("")
+                st.write(info)
 
-#         elif selected_option == "Analyzer Models":
-#             st.header("📊 Analyzer Models")
-#             with open("text_files/Analyzer_Models.txt", "r") as file:
-#                 info = file.read()
-#                 st.write("")
-#                 st.write(info)
-
-#         elif selected_option == "Algorithm Master":
-#             st.header("⚙️ Algorithm Master")
-#             with open("text_files/Algorithm_Master.txt", "r") as file:
-#                 info = file.read()
-#                 st.write("")
-#                 st.write(info)
+        elif selected_option == "Algorithm Master":
+            st.header("⚙️ Algorithm Master")
+            with open("text_files/Algorithm_Master.txt", "r") as file:
+                info = file.read()
+                st.write("")
+                st.write(info)
 
 
 st.markdown(
@@ -1694,4 +1762,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+
 
