@@ -1234,8 +1234,8 @@ elif selected_section == "Fake Predictions":
 
         # Function to load the model and vectorizer
         def load_model_and_vectorizer():
-            model = pickle.load(open('saved_models/spam.pkl', 'rb'))
-            cv = pickle.load(open('saved_models/vectorizer.pkl', 'rb'))
+            model = pickle.load(open('spam.pkl', 'rb'))
+            cv = pickle.load(open('vectorizer.pkl', 'rb'))
             return model, cv
 
 
