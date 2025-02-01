@@ -1220,16 +1220,16 @@ elif selected_section == "Fake Predictions":
             st.write("")
             st.write(info)
         import platform
-        import pyttsx3
+        #import pyttsx3
         import pickle
         import streamlit as st
 
 
         # Conditional import for pyttsx3 (cross-platform)
-        def speak(text):
-            engine = pyttsx3.init()  # Initialize the TTS engine
-            engine.say(text)  # Pass the text to the engine
-            engine.runAndWait()  # Run the engine to speak the text
+        # def speak(text):
+        #     engine = pyttsx3.init()  # Initialize the TTS engine
+        #     engine.say(text)  # Pass the text to the engine
+        #     engine.runAndWait()  # Run the engine to speak the text
 
 
         # Function to load the model and vectorizer
@@ -1274,7 +1274,7 @@ elif selected_section == "Fake Predictions":
                         </h2></div></div>
                         """,
                     unsafe_allow_html=True)
-                        speak("This is Not A Spam Email")
+                        #speak("This is Not A Spam Email")
                     else:
                         st.markdown(
                             f"""
@@ -1290,7 +1290,7 @@ elif selected_section == "Fake Predictions":
                                 """,
                             unsafe_allow_html=True
                         )
-                        speak("This is A Spam Email")
+                        #speak("This is A Spam Email")
 
 
         main()
