@@ -1213,7 +1213,7 @@ elif selected_section == "Fake Predictions":
                                     font-weight: 800;
                                     text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
                                     letter-spacing: 3px;'>
-                                    {"THE NEWS IS FAKE"}
+                                    {"THE NEWS IS REAL"}
                                 </h2>
                             </div>
                         </div>
