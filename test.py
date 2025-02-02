@@ -155,7 +155,7 @@ with (st.sidebar):
             menu_title="Choose Prediction System",
             options=["House Price Prediction", "Stocks Visual Analyzer", "Stock Price Prediction",
                      "Bank Loan Prediction"],
-            icons=["bar-chart", "bar-chart-line", "bar-chart-fill"],
+            icons=["bar-chart", "bar-chart-line", "bar-chart-fill","bar-chart-fill"],
             menu_icon="bar-chart-line",
             default_index=0
         )
