@@ -370,7 +370,7 @@ elif selected_section == "Diseases Prediction":
                         </div>
                         """,
                             unsafe_allow_html=True)
-                        with open('precautions_for_non_diabetic_individuals.txt', 'r') as file:
+                        with open('text_files/precautions_for_non_diabetic_individuals.txt', 'r') as file:
                             info = file.read()
                             st.write("")
                             st.write(info)
@@ -542,7 +542,7 @@ elif selected_section == "Diseases Prediction":
                         </div>
                         """,
                             unsafe_allow_html=True)
-                        with open('precautions_for_heart_disease.txt', 'r') as file:
+                        with open('text_files/precautions_for_heart_disease.txt', 'r') as file:
                             info = file.read()
                             st.write("")
                             st.write(info)
@@ -740,7 +740,7 @@ elif selected_section == "Diseases Prediction":
                         </div>
                         """,
                             unsafe_allow_html=True)
-                        with open('precautions_for_parkinsons.txt.txt', 'r') as file:
+                        with open('text_files/precautions_for_parkinsons.txt.txt', 'r') as file:
                             info = file.read()
                             st.write("")
                             st.write(info)
