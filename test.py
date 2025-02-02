@@ -278,12 +278,47 @@ elif selected_section == "Diseases Prediction":
                         diab_diagnosis = 'THE PERSON IS DIABETIC'
                         st.markdown(
                             f"""
-                            <div style='text-align: center; border: 2px solid green; border-radius: 10px; padding: 10px; background-color: #f0fff0;'>
-                                <h2 style='color: green; margin: 0;'>{diab_diagnosis}</h2>
+                        <div style='
+                            text-align: center; 
+                            border: 3px solid #6D28D9; 
+                            border-radius: 20px; 
+                            padding: 25px; 
+                            background: linear-gradient(145deg, #4C1D95, #5B21B6); 
+                            box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Trebuchet MS", sans-serif;
+                            position: relative;
+                            overflow: hidden;
+                            transform: perspective(1000px);'>
+                            <div style='
+                                position: absolute;
+                                top: -50%;
+                                left: -50%;
+                                width: 200%;
+                                height: 200%;
+                                background: 
+                                    radial-gradient(circle at center, 
+                                        rgba(109, 40, 217, 0.1) 0%, 
+                                        transparent 70%);
+                                opacity: 0.5;
+                                z-index: 1;
+                            '></div>
+                            <div style='
+                                position: relative; 
+                                z-index: 2;
+                                transform: rotateX(5deg);'>
+                                <h2 style='
+                                    color: #E9D5FF; 
+                                    margin: 0; 
+                                    font-size: 34px; 
+                                    font-weight: 800;
+                                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                                    letter-spacing: 3px;'>
+                                    {diab_diagnosis}
+                                </h2>
                             </div>
-                            """,
-                            unsafe_allow_html=True
-                        )
+                        </div>
+                        """,
+                            unsafe_allow_html=True)
 
                         st.write("BEST Diabetic Clinics in Mumbai:")
                         for clinic in diabetes_clinics:
@@ -294,12 +329,47 @@ elif selected_section == "Diseases Prediction":
                         diab_diagnosis = 'THE PERSON IS NOT DIABETIC'
                         st.markdown(
                             f"""
-                            <div style='text-align: center; border: 2px solid red; border-radius: 10px; padding: 10px; background-color: #fff0f0;'>
-                                <h2 style='color: red; margin: 0;'>{diab_diagnosis}</h2>
+                        <div style='
+                            text-align: center; 
+                            border: 3px solid #6D28D9; 
+                            border-radius: 20px; 
+                            padding: 25px; 
+                            background: linear-gradient(145deg, #4C1D95, #5B21B6); 
+                            box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Trebuchet MS", sans-serif;
+                            position: relative;
+                            overflow: hidden;
+                            transform: perspective(1000px);'>
+                            <div style='
+                                position: absolute;
+                                top: -50%;
+                                left: -50%;
+                                width: 200%;
+                                height: 200%;
+                                background: 
+                                    radial-gradient(circle at center, 
+                                        rgba(109, 40, 217, 0.1) 0%, 
+                                        transparent 70%);
+                                opacity: 0.5;
+                                z-index: 1;
+                            '></div>
+                            <div style='
+                                position: relative; 
+                                z-index: 2;
+                                transform: rotateX(5deg);'>
+                                <h2 style='
+                                    color: #E9D5FF; 
+                                    margin: 0; 
+                                    font-size: 34px; 
+                                    font-weight: 800;
+                                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                                    letter-spacing: 3px;'>
+                                    {diab_diagnosis}
+                                </h2>
                             </div>
-                            """,
-                            unsafe_allow_html=True
-                        )
+                        </div>
+                        """,
+                            unsafe_allow_html=True)
                         with open('precautions_for_non_diabetic_individuals.txt', 'r') as file:
                             info = file.read()
                             st.write("")
@@ -381,12 +451,47 @@ elif selected_section == "Diseases Prediction":
                         heart_diagnosis = 'THE PERSON HAS HEART DISEASE'
                         st.markdown(
                             f"""
-                                <div style='text-align: center; border: 2px solid green; border-radius: 10px; padding: 10px; background-color: #f0fff0;'>
-                                    <h2 style='color: green; margin: 0;'>{heart_diagnosis}</h2>
-                                </div>
-                                """,
-                            unsafe_allow_html=True
-                        )
+                        <div style='
+                            text-align: center; 
+                            border: 3px solid #6D28D9; 
+                            border-radius: 20px; 
+                            padding: 25px; 
+                            background: linear-gradient(145deg, #4C1D95, #5B21B6); 
+                            box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Trebuchet MS", sans-serif;
+                            position: relative;
+                            overflow: hidden;
+                            transform: perspective(1000px);'>
+                            <div style='
+                                position: absolute;
+                                top: -50%;
+                                left: -50%;
+                                width: 200%;
+                                height: 200%;
+                                background: 
+                                    radial-gradient(circle at center, 
+                                        rgba(109, 40, 217, 0.1) 0%, 
+                                        transparent 70%);
+                                opacity: 0.5;
+                                z-index: 1;
+                            '></div>
+                            <div style='
+                                position: relative; 
+                                z-index: 2;
+                                transform: rotateX(5deg);'>
+                                <h2 style='
+                                    color: #E9D5FF; 
+                                    margin: 0; 
+                                    font-size: 34px; 
+                                    font-weight: 800;
+                                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                                    letter-spacing: 3px;'>
+                                    {heart_diagnosis}
+                                </h2>
+                            </div>
+                        </div>
+                        """,
+                            unsafe_allow_html=True)
                         st.write("Nearby Heart Clinics in Mumbai:")
                         for clinic in heart_clinics:
                             st.write(f"**{clinic['name']}** - {clinic['address']}  \n"
@@ -396,12 +501,47 @@ elif selected_section == "Diseases Prediction":
                         heart_diagnosis = 'THE PERSON DOES NOT HAVE HEART DISEASE'
                         st.markdown(
                             f"""
-                                <div style='text-align: center; border: 2px solid red; border-radius: 10px; padding: 10px; background-color: #fff0f0;'>
-                                    <h2 style='color: red; margin: 0;'>{heart_diagnosis}</h2>
-                                </div>
-                                """,
-                            unsafe_allow_html=True
-                        )
+                        <div style='
+                            text-align: center; 
+                            border: 3px solid #6D28D9; 
+                            border-radius: 20px; 
+                            padding: 25px; 
+                            background: linear-gradient(145deg, #4C1D95, #5B21B6); 
+                            box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Trebuchet MS", sans-serif;
+                            position: relative;
+                            overflow: hidden;
+                            transform: perspective(1000px);'>
+                            <div style='
+                                position: absolute;
+                                top: -50%;
+                                left: -50%;
+                                width: 200%;
+                                height: 200%;
+                                background: 
+                                    radial-gradient(circle at center, 
+                                        rgba(109, 40, 217, 0.1) 0%, 
+                                        transparent 70%);
+                                opacity: 0.5;
+                                z-index: 1;
+                            '></div>
+                            <div style='
+                                position: relative; 
+                                z-index: 2;
+                                transform: rotateX(5deg);'>
+                                <h2 style='
+                                    color: #E9D5FF; 
+                                    margin: 0; 
+                                    font-size: 34px; 
+                                    font-weight: 800;
+                                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                                    letter-spacing: 3px;'>
+                                    {heart_diagnosis}
+                                </h2>
+                            </div>
+                        </div>
+                        """,
+                            unsafe_allow_html=True)
                         with open('precautions_for_heart_disease.txt', 'r') as file:
                             info = file.read()
                             st.write("")
@@ -509,12 +649,47 @@ elif selected_section == "Diseases Prediction":
                         parkinsons_diagnosis = "THE PERSON HAS PARKINSON'S DISEASE"
                         st.markdown(
                             f"""
-                                <div style='text-align: center; border: 2px solid green; border-radius: 10px; padding: 10px; background-color: #f0fff0;'>
-                                    <h2 style='color: green; margin: 0;'>{parkinsons_diagnosis}</h2>
-                                </div>
-                                """,
-                            unsafe_allow_html=True
-                        )
+                        <div style='
+                            text-align: center; 
+                            border: 3px solid #6D28D9; 
+                            border-radius: 20px; 
+                            padding: 25px; 
+                            background: linear-gradient(145deg, #4C1D95, #5B21B6); 
+                            box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Trebuchet MS", sans-serif;
+                            position: relative;
+                            overflow: hidden;
+                            transform: perspective(1000px);'>
+                            <div style='
+                                position: absolute;
+                                top: -50%;
+                                left: -50%;
+                                width: 200%;
+                                height: 200%;
+                                background: 
+                                    radial-gradient(circle at center, 
+                                        rgba(109, 40, 217, 0.1) 0%, 
+                                        transparent 70%);
+                                opacity: 0.5;
+                                z-index: 1;
+                            '></div>
+                            <div style='
+                                position: relative; 
+                                z-index: 2;
+                                transform: rotateX(5deg);'>
+                                <h2 style='
+                                    color: #E9D5FF; 
+                                    margin: 0; 
+                                    font-size: 34px; 
+                                    font-weight: 800;
+                                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                                    letter-spacing: 3px;'>
+                                    {parkinsons_diagnosis}
+                                </h2>
+                            </div>
+                        </div>
+                        """,
+                            unsafe_allow_html=True)
                         st.write("Nearby Parkinson's Clinics in Mumbai:")
                         for clinic in parkinsons_clinics:
                             st.write(f"**{clinic['name']}** - {clinic['address']}  \n"
@@ -524,12 +699,47 @@ elif selected_section == "Diseases Prediction":
                         parkinsons_diagnosis = "THE PERSON DOES NOT HAVE PARKINSON'S DISEASE"
                         st.markdown(
                             f"""
-                                <div style='text-align: center; border: 2px solid red; border-radius: 10px; padding: 10px; background-color: #fff0f0;'>
-                                    <h2 style='color: red; margin: 0;'>{parkinsons_diagnosis}</h2>
-                                </div>
-                                """,
-                            unsafe_allow_html=True
-                        )
+                        <div style='
+                            text-align: center; 
+                            border: 3px solid #6D28D9; 
+                            border-radius: 20px; 
+                            padding: 25px; 
+                            background: linear-gradient(145deg, #4C1D95, #5B21B6); 
+                            box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Trebuchet MS", sans-serif;
+                            position: relative;
+                            overflow: hidden;
+                            transform: perspective(1000px);'>
+                            <div style='
+                                position: absolute;
+                                top: -50%;
+                                left: -50%;
+                                width: 200%;
+                                height: 200%;
+                                background: 
+                                    radial-gradient(circle at center, 
+                                        rgba(109, 40, 217, 0.1) 0%, 
+                                        transparent 70%);
+                                opacity: 0.5;
+                                z-index: 1;
+                            '></div>
+                            <div style='
+                                position: relative; 
+                                z-index: 2;
+                                transform: rotateX(5deg);'>
+                                <h2 style='
+                                    color: #E9D5FF; 
+                                    margin: 0; 
+                                    font-size: 34px; 
+                                    font-weight: 800;
+                                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                                    letter-spacing: 3px;'>
+                                    {parkinsons_diagnosis}
+                                </h2>
+                            </div>
+                        </div>
+                        """,
+                            unsafe_allow_html=True)
                         with open('precautions_for_parkinsons.txt.txt', 'r') as file:
                             info = file.read()
                             st.write("")
@@ -645,7 +855,7 @@ elif selected_section == "Finance Models":
         import plotly.graph_objects as go
         import yfinance as yf
 
-        st.markdown("<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'> STOCKS ANALYZER</h1>",
+        st.markdown("<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>📈 STOCKS ANALYZER 📈</h1>",
                     unsafe_allow_html=True)
 
         st.title("AI-Powered Technical Stock Analysis Dashboard")
@@ -927,16 +1137,15 @@ elif selected_section == "Finance Models":
                 if ans == 0:
                     st.error(
                         "Hello: " + fn + " || "
-                                         "Account number: " + account_no + ' || '
-                                                                           'According to our Calculations, you will not get the loan from Bank'
+                        "Account number: " + account_no + ' || '
+                        'According to our Calculations, you will not get the loan from Bank'
                     )
                 else:
                     st.success(
                         "Hello: " + fn + " || "
-                                         "Account number: " + account_no + ' || '
-                                                                           'Congratulations!! you will get the loan from Bank'
-                    )
-
+                        "Account number: " + account_no + ' || '
+                        'Congratulations!! you will get the loan from Bank'
+                        )
 
         run()
 
@@ -966,6 +1175,7 @@ elif selected_section == "Fake Predictions":
                 prediction = model.predict(transform_input)
 
                 if prediction[0] == 1:
+                    
                     st.markdown(
                         f"""
                         <div style='
@@ -1003,16 +1213,14 @@ elif selected_section == "Fake Predictions":
                                     font-weight: 800;
                                     text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
                                     letter-spacing: 3px;'>
-                                    {"THE NEWS IS REAL"}
+                                    {"THE NEWS IS FAKE"}
                                 </h2>
-
                             </div>
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
 
-                    st.success("The News is Real! ")
                 else:
                     st.markdown(
                         f"""
@@ -1189,17 +1397,17 @@ elif selected_section == "Fake Predictions":
                     else:
                         st.markdown(
                             f"""
-                                    <div style='
-                                    text-align: center; border: 3px solid #6D28D9; border-radius: 15px; padding: 25px; background: linear-gradient(145deg, #4C1D95, #5B21B6); box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
-                                    font-family: "Bold Addict", sans-serif; position: relative; overflow: hidden; transform: perspective(1000px);'><div style='
-                                    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-                                    background: radial-gradient(circle at center, rgba(109, 40, 217, 0.1) 0%, transparent 70%);
-                                    opacity: 0.5; z-index: 1;'></div><div style='position: relative; z-index: 2; transform: rotateX(5deg);'>
-                                    <h2 style='color: #E9D5FF; margin: 0; font-size: 34px; font-weight: 800;text-shadow: 3px 3px 6px rgba(0,0,0,0.3); letter-spacing: 3px;'>
-                                    {"Transaction is Legitimate"}
-                                    </h2></div></div>
-                                    """,
-                            unsafe_allow_html=True
+                            <div style='
+                            text-align: center; border: 3px solid #6D28D9; border-radius: 15px; padding: 25px; background: linear-gradient(145deg, #4C1D95, #5B21B6); box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                            font-family: "Bold Addict", sans-serif; position: relative; overflow: hidden; transform: perspective(1000px);'><div style='
+                            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+                            background: radial-gradient(circle at center, rgba(109, 40, 217, 0.1) 0%, transparent 70%);
+                            opacity: 0.5; z-index: 1;'></div><div style='position: relative; z-index: 2; transform: rotateX(5deg);'>
+                            <h2 style='color: #E9D5FF; margin: 0; font-size: 34px; font-weight: 800;text-shadow: 3px 3px 6px rgba(0,0,0,0.3); letter-spacing: 3px;'>
+                            {"Transaction is Legitimate"}
+                            </h2></div></div>
+                            """,
+                    unsafe_allow_html=True
                         )
                 except ValueError:
                     st.error('Please enter valid numeric values.')
