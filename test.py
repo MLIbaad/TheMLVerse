@@ -223,7 +223,7 @@ if selected_section == "About Project":
 elif selected_section == "Diseases Prediction":
     if disease_selection == "Diabetes Prediction":
         st.markdown(
-            "<h1 style='text-align: center;text-decoration: underline ;color : #FF7074; '>DIABETES PREDICTION SYSTEM</h1>",
+            "<h1 style='text-align: center;text-decoration: underline ;color : #9699F8; '>⚕️ 𝔻𝕀𝔸𝔹𝔼𝕋𝔼𝕊 ℙℝ𝔼𝔻𝕀ℂ𝕋𝕀𝕆ℕ 𝕊𝕐𝕊𝕋𝔼𝕄 ⚕️</h1>",
             unsafe_allow_html=True)
         st.markdown(
             "<h3 style='text-align: center; '>This section allows you to predict the likelihood of diabetes</h3>",
