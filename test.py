@@ -40,8 +40,19 @@ model = st.session_state.models["fake_news_model"]
 credit_fraud_model = st.session_state.models["credit_fraud"]
 
 
-
-
+def speak(text):
+    js = f"""
+    <script>
+    function speak() {{
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = "{text}";
+        window.speechSynthesis.speak(msg);
+    }}
+    speak();
+    </script>
+    """
+    st.components.v1.html(js, height=0)
+    
 
 disease_selection = None
 Finance_model_selection = None
