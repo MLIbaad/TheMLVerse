@@ -1528,10 +1528,7 @@ elif selected_section == "Fake Predictions":
                             </h2></div></div>
                             """,
                         unsafe_allow_html=True
-                    )
-                    speak("This is A Spam Email")
-
-
+                    )speak("This is A Spam Email")
         main()
 
 
