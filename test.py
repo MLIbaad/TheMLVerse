@@ -190,7 +190,7 @@ with (st.sidebar):
 
 
 if selected_section == "About Project":
-    st.markdown("<h1 style='text-align: center;font_size : 22px ;text-decoration: underline ; '>Ｔｈｅ ＭＬ Ｖｅｒｓｅ</h1>",
+    st.markdown("<h1 style='text-align: center;font_size : 22px ;text-decoration: underline ;color: #9699F8;'>꧁༒༺ The ML Verse ༻༒꧂</h1>",
                 unsafe_allow_html=True)
 
     image = Image.open('images/ai_IMG.jpg')
