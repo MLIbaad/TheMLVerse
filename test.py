@@ -221,18 +221,18 @@ if selected_section == "About Project":
 
 
 elif selected_section == "Diseases Prediction":
-        if disease_selection == "Diabetes Prediction":
-            st.markdown(
-                "<h1 style='text-align: center;text-decoration: underline ;color : #9699F8; '>⚕️ 𝔻𝕀𝔸𝔹𝔼𝕋𝔼𝕊 ℙℝ𝔼𝔻𝕀ℂ𝕋𝕀𝕆ℕ 𝕊𝕐𝕊𝕋𝔼𝕄 ⚕️</h1>",
-                unsafe_allow_html=True)
-            st.markdown(
-                "<h3 style='text-align: center; '>This section allows you to predict the likelihood of diabetes</h3>",
-                unsafe_allow_html=True)
-            dibetse = Image.open('images/diabetes_high_quality.jpg', 'r')
-            dibetse = dibetse.resize((1200, 400))
-            st.image(dibetse, use_container_width=False)
-            st.markdown("<h2 style='text-align: center; text-decoration: underline;'>𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁 𝗡𝗼𝘁𝗶𝗰𝗲</h2>",
-                        unsafe_allow_html=True)
+    if disease_selection == "Diabetes Prediction":
+        st.markdown(
+            "<h1 style='text-align: center;text-decoration: underline ;color : #9699F8; '>⚕️ 𝔻𝕀𝔸𝔹𝔼𝕋𝔼𝕊 ℙℝ𝔼𝔻𝕀ℂ𝕋𝕀𝕆ℕ 𝕊𝕐𝕊𝕋𝔼𝕄 ⚕️</h1>",
+            unsafe_allow_html=True)
+        st.markdown(
+            "<h3 style='text-align: center; '>This section allows you to predict the likelihood of diabetes</h3>",
+            unsafe_allow_html=True)
+        dibetse = Image.open('images/diabetes_high_quality.jpg', 'r')
+        dibetse = dibetse.resize((1200, 400))
+        st.image(dibetse, use_container_width=False)
+        st.markdown("<h2 style='text-align: center; text-decoration: underline;'>𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁 𝗡𝗼𝘁𝗶𝗰𝗲</h2>",
+                    unsafe_allow_html=True)
         with open('text_files/diabetes.txt', 'r') as file:
             info = file.read()
             st.write("")
