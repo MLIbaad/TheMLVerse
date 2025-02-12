@@ -175,7 +175,7 @@ with (st.sidebar):
         Fake_Models = option_menu(
             menu_title="Choose Model",
             options=["Fake News Prediction", "Credit Card Fraud Detection", "Spam Mail Detection"],
-            icons=["bar-chart", "bar-chart-line"],
+            icons=["bar-chart", "bar-chart-line", "bar-chart-line"],
             menu_icon="bar-chart-line",
             default_index=0
         )
