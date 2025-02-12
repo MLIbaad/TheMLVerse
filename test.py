@@ -556,14 +556,16 @@ elif selected_section == "Diseases Prediction":
                     st.error('Please enter valid numeric values.')
 
 
-    # Add your heart disease prediction model code here
 
     elif disease_selection == "Parkinson's Prediction":
         st.markdown(
-            "<h1 style='text-align: center;text-decoration: underline ;color : #FF7074; '>PARKINSON'S PREDICTION SYSTEM</h1>",
+            "<h1 style='text-align: center;text-decoration: underline ;color : #9699F8; '>👴 ℙ𝔸ℝ𝕂𝕀ℕ𝕊𝕆ℕ'𝕊 ℙℝ𝔼𝔻𝕀ℂ𝕋𝕀𝕆ℕ 𝕊𝕐𝕊𝕋𝔼𝕄 👴</h1>",
             unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; text-decoration: underline;'>𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁 𝗡𝗼𝘁𝗶𝗰𝗲</h2>",
                     unsafe_allow_html=True)
+        park_img= Image.open('images/park_high_quality.jpg', 'r')
+        park_img = park_img.resize((1200, 400))
+        st.image(park_img, use_container_width=False)
         with open('text_files/parkkin_se.txt', 'r') as file:
             info = file.read()
             st.write("")
@@ -756,8 +758,11 @@ elif selected_section == "Diseases Prediction":
 elif selected_section == "Finance Models":
     if Finance_model_selection == "House Price Prediction":
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🏠HOUSE PRICE PREDICTION💰</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>🏠ℍ𝕆𝕌𝕊𝔼 ℙℝ𝕀ℂ𝔼 ℙℝ𝔼𝔻𝕀ℂ𝕋𝕀𝕆ℕ💰</h1>",
             unsafe_allow_html=True)
+        house_img = Image.open('images/house_pred.jpg', 'r')
+        house_img= house_img.resize((1200, 400))
+        st.image(house_img, use_container_width=False)
         import zipfile
         import joblib
         import io
@@ -765,21 +770,6 @@ elif selected_section == "Finance Models":
         with zipfile.ZipFile("saved_models/Heart_pred.zip", "r") as z:
             with z.open("Heart_pred.sav") as f:
                house_model= joblib.load(io.BytesIO(f.read()))  # Load directly into memory
-
-        with open('text_files/caution.txt', 'r') as file:
-            info = file.read()
-            st.write("")
-            st.write(info)
-            st.markdown(
-                "<h4 style='text-align: left; text-decoration: underline;'>User Inputs for House Price Prediction : </h4>",
-                unsafe_allow_html=True)
-            st.markdown(
-                "<h4 style='text-align: left;'>To make predictions regarding House Price, we require the following inputs from the user:</h5>",
-                unsafe_allow_html=True)
-            with open('text_files/house_UI.txt', 'r') as file:
-                info = file.read()
-                st.write("")
-                st.write(info)
 
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -861,10 +851,13 @@ elif selected_section == "Finance Models":
         import plotly.graph_objects as go
         import yfinance as yf
 
-        st.markdown("<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>📈 STOCKS ANALYZER 📈</h1>",
+        st.markdown("<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>📈 𝕊𝕋𝕆ℂ𝕂𝕊 𝔸ℕ𝔸𝕃𝕐ℤ𝔼ℝ 📈</h1>",
                     unsafe_allow_html=True)
 
         st.title("AI-Powered Technical Stock Analysis Dashboard")
+        stock_an = Image.open('images/stock_analyze.png', 'r')
+        stock_an = stock_an.resize((1200, 400))
+        st.image(stock_an, use_container_width=False)
         st.markdown(
             "<h4 style='text-align: left; text-decoration: underline;'>User Inputs for Stocks Visual Analyzer : </h4>",
             unsafe_allow_html=True)
@@ -872,21 +865,18 @@ elif selected_section == "Finance Models":
             "<h4 style='text-align: left;'>To Visualize the Stock Prices, we require the following inputs from the user:</h5>",
             unsafe_allow_html=True)
 
-        # User inputs
         ticker = st.text_input("Enter Stock Ticker (e.g., AAPL):", "AAPL")
         start_date = st.date_input("Start Date", value=pd.to_datetime("2023-01-01"))
         end_date = st.date_input("End Date", value=pd.to_datetime("2024-12-14"))
 
-        # Fetch stock data
         if st.button("Fetch Data"):
             st.session_state["stock_data"] = yf.download(ticker, start=start_date, end=end_date)
             st.success("Stock data loaded successfully!")
 
-        # Check if data is available
         if "stock_data" in st.session_state:
             data = st.session_state["stock_data"]
-
-            # Create the base candlestick chart
+            
+            #candlestick feature
             fig = go.Figure(data=[
                 go.Candlestick(
                     x=data.index,
@@ -938,7 +928,7 @@ elif selected_section == "Finance Models":
 
     elif Finance_model_selection == "Stock Price Prediction":
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>💰 STOCK PRICE PREDICTOR 💰</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>💹 𝕊𝕋𝕆ℂ𝕂 ℙℝ𝕀ℂ𝔼 ℙℝ𝔼𝔻𝕀ℂ𝕋𝕆ℝ 💹</h1>",
             unsafe_allow_html=True)
         import plotly.graph_objects as go
         import yfinance as yf
@@ -947,6 +937,9 @@ elif selected_section == "Finance Models":
         import matplotlib.dates as mdates
         st.markdown("<h1 style='text-align: center;'>Enhanced Stock Price Predictor Prediction</h1>",
                     unsafe_allow_html=True)
+        stock_pred = Image.open('images/stock_price_high_quality.jpg', 'r')
+        stock_pred = stock_pred.resize((1200, 400))
+        st.image(stock_pred, use_container_width=False)
         with open('text_files/caution.txt', 'r') as file:
             info = file.read()
             st.write("")
@@ -1059,13 +1052,13 @@ elif selected_section == "Finance Models":
 
     elif Finance_model_selection == "Bank Loan Prediction":
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>💰 BANK LOAN PREDICTION 💰</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>🏦 𝔹𝔸ℕ𝕂 𝕃𝕆𝔸ℕ ℙℝ𝔼𝔻𝕀ℂ𝕋𝕀𝕆ℕ 🏦</h1>",
             unsafe_allow_html=True)
 
 
         def run():
             img1 = Image.open('images/bank.jpg', 'r')
-            img1 = img1.resize((1100, 600))
+            img1 = img1.resize((1200, 400))
             st.image(img1, use_container_width=False)
             st.title("Bank Loan Prediction using Machine Learning")
             with open('text_files/caution.txt', 'r') as file:
@@ -1163,8 +1156,11 @@ elif selected_section == "Finance Models":
 elif selected_section == "Fake Predictions":
     if Fake_Models == "Fake News Prediction":
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🕵️ FAKE NEWS PREDICTION 🕵️</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>🗞️ 𝔽𝔸𝕂𝔼 ℕ𝔼𝕎𝕊 ℙℝ𝔼𝔻𝕀ℂ𝕋𝕀𝕆ℕ 🗞️</h1>",
             unsafe_allow_html=True)
+        Fake_news = Image.open('images/fake_new_high_quality.jpg', 'r')
+        Fake_news = Fake_news.resize((1200, 400))
+        st.image(Fake_news, use_container_width=False)
 
         with open('text_files/caution.txt', 'r') as file:
             info = file.read()
@@ -1288,8 +1284,12 @@ elif selected_section == "Fake Predictions":
 
 
     elif Fake_Models == "Credit Card Fraud Detection":
-        st.markdown("<h1 style='text-align: center; text-decoration: underline;'>🕵️ Credit Card Fraud Detection 🕵️</h1>",
+        st.markdown("<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>🕵️ ℂ𝕣𝕖𝕕𝕚𝕥 ℂ𝕒𝕣𝕕 𝔽𝕣𝕒𝕦𝕕 𝔻𝕖𝕥𝕖𝕔𝕥𝕚𝕠𝕟 🕵️</h1>",
                     unsafe_allow_html=True)
+        Credit_Fraud = Image.open('images/credit_card_high_quality.jpg', 'r')
+        Credit_Fraud = Credit_Fraud.resize((1100, 400))
+        st.image(Credit_Fraud, use_container_width=False)
+
         import pandas as pd
         with open('text_files/caution.txt', 'r') as file:
             info = file.read()
@@ -1422,8 +1422,11 @@ elif selected_section == "Fake Predictions":
 
     elif Fake_Models == "Spam Mail Detection":
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🕵️ SPAM MAIL DETECTION 🕵️</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>📧 𝕊ℙ𝔸𝕄 𝕄𝔸𝕀𝕃 𝔻𝔼𝕋𝔼ℂ𝕋𝕀𝕆ℕ 📧</h1>",
             unsafe_allow_html=True)
+        Spam_mail_img = Image.open('images/spam_mail_hd_quality.jpg', 'r')
+        Spam_mail_img= Spam_mail_img.resize((1200, 400))
+        st.image(Spam_mail_img, use_container_width=False)
 
         with open("text_files/caution.txt", "r") as file:
             info = file.read()
@@ -1436,8 +1439,6 @@ elif selected_section == "Fake Predictions":
             st.write(info)
         import platform
         #import pyttsx3
-        import pickle
-        import streamlit as st
 
 
         # Conditional import for pyttsx3 (cross-platform)
@@ -1515,8 +1516,11 @@ elif selected_section == "Fake Predictions":
 elif selected_section == "Analyzer Models":
     if Analyzer_selection == "Simple Sentiment Analysis":
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🕊️ Simple Tweets Sentiment Analysis 🕊️</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>🕊️ 𝕊𝕚𝕞𝕡𝕝𝕖 𝕋𝕨𝕖𝕖𝕥𝕤 𝕊𝕖𝕟𝕥𝕚𝕞𝕖𝕟𝕥 𝔸𝕟𝕒𝕝𝕪𝕤𝕚𝕤 🕊️</h1>",
             unsafe_allow_html=True)
+        sentiment_img = Image.open('images/sentiment_analysis.jpg', 'r')
+        sentiment_img= sentiment_img.resize((1200, 400))
+        st.image(sentiment_img, use_container_width=False)
 
         from transformers import AutoModelForSequenceClassification, AutoTokenizer
         from scipy.special import softmax
@@ -1616,11 +1620,13 @@ elif selected_section == "Analyzer Models":
 
 
 
-
     elif Analyzer_selection == "Exploartory Data Analysis":
 
-        st.markdown("<h1 style='text-align: center; color : #FF7074; text-decoration: underline;'>The EDA App</h1>",
+        st.markdown("<h1 style='text-align: center; color : #9699F8; text-decoration: underline;'>🔎 𝕋𝕙𝕖 𝔼𝔻𝔸 𝔸𝕡𝕡 🔍</h1>",
                     unsafe_allow_html=True)
+        EDA_img = Image.open('images/eda_hd_quality.jpg', 'r')
+        EDA_img= EDA_img.resize((1200, 400))
+
         from ydata_profiling import ProfileReport
         from streamlit_pandas_profiling import st_profile_report
 
@@ -1681,9 +1687,12 @@ elif selected_section == "Analyzer Models":
 elif selected_section == "Algorithm Master":
     if Algorithm_selection == "AutoML":
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>"
-            "The Machine Learning Algorithm Comparison App</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>"
+            "🧮 𝕋𝕙𝕖 𝕄𝕒𝕔𝕙𝕚𝕟𝕖 𝕃𝕖𝕒𝕣𝕟𝕚𝕟𝕘 𝔸𝕝𝕘𝕠𝕣𝕚𝕥𝕙𝕞 ℂ𝕠𝕞𝕡𝕒𝕣𝕚𝕤𝕠𝕟 𝔸𝕡𝕡 🧮</h1>",
             unsafe_allow_html=True)
+        automl_img= Image.open('images/automl.jpeg', 'r')
+        automl_img= automl_img.resize((1200, 400))
+        st.image(automl_img, use_container_width=False)
         import seaborn as sns
         import base64
         from lazypredict.Supervised import LazyRegressor
@@ -1808,8 +1817,12 @@ elif selected_section == "Algorithm Master":
     elif Algorithm_selection == "No Code Machine Learning Trainer":
 
         st.markdown(
-            "<h1 style='text-align: center; text-decoration: underline;color : #FF7074;'>🤖 No Code ML Model Training 🤖</h1>",
+            "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>🤖 ℕ𝕠 ℂ𝕠𝕕𝕖 𝕄𝕃 𝕄𝕠𝕕𝕖𝕝 𝕋𝕣𝕒𝕚𝕟𝕚𝕟𝕘 🤖</h1>",
             unsafe_allow_html=True)
+        nocode_img= Image.open('images/no_code_model_hd.jpg', 'r')
+        nocode_img= nocode_img.resize((1200, 400))
+        st.image(nocode_img, use_container_width=False)
+
         from sklearn.linear_model import LogisticRegression
         from sklearn.svm import SVC
         from sklearn.ensemble import RandomForestClassifier
