@@ -387,10 +387,13 @@ elif selected_section == "Diseases Prediction":
 
     elif disease_selection == "Heart Disease Prediction":
         st.markdown(
-            "<h1 style='text-align: center;text-decoration: underline ;color : #FF7074; '>HEART DISEASE PREDICTION SYSTEM</h1>",
+            "<h1 style='text-align: center;text-decoration: underline ;color : #9699F8; '>🫀 ℍ𝔼𝔸ℝ𝕋 𝔻𝕀𝕊𝔼𝔸𝕊𝔼 ℙℝ𝔼𝔻𝕀ℂ𝕋𝕀𝕆ℕ 𝕊𝕐𝕊𝕋𝔼𝕄 🫀</h1>",
             unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; text-decoration: underline;'>𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁 𝗡𝗼𝘁𝗶𝗰𝗲</h2>",
                     unsafe_allow_html=True)
+        heart_img = Image.open('images/heart_high_quality.jpg', 'r')
+        heart_img= heart_img.resize((1200, 400))
+        st.image(heart_img, use_container_width=False)
         with open('text_files/heart_se.txt', 'r') as file:
             info = file.read()
             st.write("")
