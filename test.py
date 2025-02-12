@@ -1943,7 +1943,8 @@ elif selected_section == "REFERENCE":
                 "Finance Models",
                 "Fake Predictions",
                 "Analyzer Models",
-                "Algorithm Master"
+                "Algorithm Master",
+                "Images Sources"
             ],
             index=0
         )
@@ -1986,6 +1987,13 @@ elif selected_section == "REFERENCE":
                 info = file.read()
                 st.write("")
                 st.write(info)
+        elif selected_option == "Images Sources":
+            st.header("📷 Images Sources")
+            with open("text_files/img_sources.txt", "r") as file:
+                info = file.read()
+                st.write("")
+                st.write(info)
+
 
 
 st.markdown(
