@@ -386,6 +386,8 @@ elif selected_section == "Diseases Prediction":
                         </div>
                         """,
                             unsafe_allow_html=True)
+                        speak("Diabetes Test Result is Negative, although the below mentioned precautions must be taken")
+
                         with open('text_files/precautions_for_non_diabetic_individuals.txt', 'r') as file:
                             info = file.read()
                             st.write("")
@@ -511,6 +513,8 @@ elif selected_section == "Diseases Prediction":
                         </div>
                         """,
                             unsafe_allow_html=True)
+                        speak("Heart Test Result is that the person has Heart Disease, this is just a prediction, doctors consultation is recommended. Below are the best heart clinics near you")
+
                         st.write("Nearby Heart Clinics in Mumbai:")
                         for clinic in heart_clinics:
                             st.write(f"**{clinic['name']}** - {clinic['address']}  \n"
@@ -561,6 +565,8 @@ elif selected_section == "Diseases Prediction":
                         </div>
                         """,
                             unsafe_allow_html=True)
+                        speak("Heart disease Test Result is Negative, although the below mentioned precautions must be taken")
+
                         with open('text_files/precautions_for_heart_disease.txt', 'r') as file:
                             info = file.read()
                             st.write("")
@@ -711,6 +717,8 @@ elif selected_section == "Diseases Prediction":
                         </div>
                         """,
                             unsafe_allow_html=True)
+                        speak("Parkinsons Test Result is that the person has Parkinsons Disease, this is just a prediction, doctors consultation is recommended. Below are the best Parkinsons clinics near you")
+
                         st.write("Nearby Parkinson's Clinics in Mumbai:")
                         for clinic in parkinsons_clinics:
                             st.write(f"**{clinic['name']}** - {clinic['address']}  \n"
@@ -761,6 +769,8 @@ elif selected_section == "Diseases Prediction":
                         </div>
                         """,
                             unsafe_allow_html=True)
+                        speak("Parkinsons Test Result is Negative, although the below mentioned precautions must be taken")
+
                         with open('text_files/precautions_for_parkinsons.txt.txt', 'r') as file:
                             info = file.read()
                             st.write("")
@@ -1235,6 +1245,8 @@ elif selected_section == "Fake Predictions":
                         """,
                         unsafe_allow_html=True
                     )
+                    speak("The New Is Real!")
+
 
                 else:
                     st.markdown(
@@ -1290,6 +1302,8 @@ elif selected_section == "Fake Predictions":
                         """,
                         unsafe_allow_html=True
                     )
+                    speak("The News is Fake! Misinformation Detected.")
+
 
             else:
                 st.warning("Please enter some text to Analyze. ")
@@ -1413,6 +1427,8 @@ elif selected_section == "Fake Predictions":
                                 """,
                             unsafe_allow_html=True
                         )
+                        speak("The Transaction Is Fraud")
+
                     else:
                         st.markdown(
                             f"""
@@ -1428,6 +1444,8 @@ elif selected_section == "Fake Predictions":
                             """,
                     unsafe_allow_html=True
                         )
+                        speak("The Transaction Is Legitimate")
+
                 except ValueError:
                     st.error('Please enter valid numeric values.')
 
@@ -1451,17 +1469,8 @@ elif selected_section == "Fake Predictions":
             st.write("")
             st.write(info)
         import platform
-        #import pyttsx3
 
 
-        # Conditional import for pyttsx3 (cross-platform)
-        # def speak(text):
-        #     engine = pyttsx3.init()  # Initialize the TTS engine
-        #     engine.say(text)  # Pass the text to the engine
-        #     engine.runAndWait()  # Run the engine to speak the text
-
-
-        # Function to load the model and vectorizer
         def load_model_and_vectorizer():
             model = pickle.load(open('spam.pkl', 'rb'))
             cv = pickle.load(open('vectorizer.pkl', 'rb'))
@@ -1503,7 +1512,8 @@ elif selected_section == "Fake Predictions":
                         </h2></div></div>
                         """,
                     unsafe_allow_html=True)
-                        # speak("This is Not A Spam Email")
+                    speak("This is Not A Spam Email")
+
                     else:
                         st.markdown(
                             f"""
@@ -1519,7 +1529,7 @@ elif selected_section == "Fake Predictions":
                                 """,
                             unsafe_allow_html=True
                         )
-                        # speak("This is A Spam Email")
+                        speak("This is A Spam Email")
 
 
         main()
