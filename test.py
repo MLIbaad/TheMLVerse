@@ -1468,24 +1468,11 @@ elif selected_section == "Fake Predictions":
             st.write("")
             st.write(info)
         import platform
-        # import pyttsx3
-        # import pickle
-        # import streamlit as st
-        #
-        #
-        # # Conditional import for pyttsx3 (cross-platform)
-        # def speak(text):
-        #     engine = pyttsx3.init()
-        #     engine.say(text)
-        #     engine.runAndWait()
-
-
-        # Function to load the model and vectorizer
+       
         def load_model_and_vectorizer():
             model = pickle.load(open('saved_models/spam.pkl', 'rb'))
-            cv = pickle.load(open('/vectorizer.pkl', 'rb'))
+            cv = pickle.load(open('vectorizer.pkl', 'rb'))
             return model, cv
-
 
         model, cv = load_model_and_vectorizer()
 
