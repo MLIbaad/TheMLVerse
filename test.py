@@ -1168,7 +1168,6 @@ elif selected_section == "Finance Models":
                         "Account number: " + account_no + ' || '
                         'Congratulations!! you will get the loan from Bank'
                         )
-
         run()
 
 
@@ -1528,7 +1527,8 @@ elif selected_section == "Fake Predictions":
                             </h2></div></div>
                             """,
                         unsafe_allow_html=True
-                    )speak("This is A Spam Email")
+                    )
+                    speak("This is A Spam Email")
         main()
 
 
