@@ -125,7 +125,7 @@ This project is licensed under the MIT License.
 
 ## 📞 Contact
 
-For questions or collaborations, reach out at [[your.email@example.com](mailto\:your.email@example.com)].
+For questions or collaborations, reach out at [(collegework404@gmail.com)].
 
 ---
 
