@@ -146,7 +146,7 @@ with (st.sidebar):
         menu_title="𝕋𝕙𝕖 𝕄𝕃 𝕍𝕖𝕣𝕤𝕖",
         options=["About Project", "Diseases Prediction", "Finance Models", "Fake Predictions", "Analyzer Models",
                  "Algorithm Master","REFERENCE"],
-        icons=["book", "book", "book", "book", "book", "book","list"],
+        icons=["megaphone", "activity", "bank", "shield-exclamation", "graph-up", "cpu","globe"],
         menu_icon="list-task",
         default_index=0
     )
@@ -166,7 +166,7 @@ with (st.sidebar):
             menu_title="Choose Prediction System",
             options=["House Price Prediction", "Stocks Visual Analyzer", "Stock Price Prediction",
                      "Bank Loan Prediction"],
-            icons=["bar-chart", "bar-chart-line", "bar-chart-fill","bar-chart-fill"],
+            icons=["house-fill", "graph-up-arrow", "currency-exchange","cash-stack"],
             menu_icon="bar-chart-line",
             default_index=0
         )
@@ -175,7 +175,7 @@ with (st.sidebar):
         Fake_Models = option_menu(
             menu_title="Choose Model",
             options=["Fake News Prediction", "Credit Card Fraud Detection", "Spam Mail Detection"],
-            icons=["bar-chart", "bar-chart-line", "bar-chart-line"],
+            icons=["exclamation-octagon-fill", "shield-lock-fill","envelope-exclamation-fill"],
             menu_icon="bar-chart-line",
             default_index=0
         )
@@ -183,7 +183,7 @@ with (st.sidebar):
         Analyzer_selection = option_menu(
             menu_title="Choose Prediction System",
             options=["Simple Sentiment Analysis", "Exploartory Data Analysis"],
-            icons=["bar-chart", "bar-chart-line"],
+            icons=["emoji-smile-fill", "bar-chart-line-fill"],
             menu_icon="bar-chart-line",
             default_index=0
         )
@@ -191,8 +191,8 @@ with (st.sidebar):
     elif selected_section == "Algorithm Master":
         Algorithm_selection = option_menu(
             menu_title="Choose Prediction System",
-            options=["AutoML", "No Code Machine Learning Trainer"],
-            icons=["bar-chart", "bar-chart-line"],
+            options=["AutoML", "No Code ML Model Trainer"],
+            icons=["cpu-fill", "code-slash"],
             menu_icon="bar-chart-line",
             default_index=0
         )
@@ -1831,7 +1831,7 @@ elif selected_section == "Algorithm Master":
 
                 build_model(df)
 
-    elif Algorithm_selection == "No Code Machine Learning Trainer":
+    elif Algorithm_selection == "No Code ML Model Trainer":
 
         st.markdown(
             "<h1 style='text-align: center; text-decoration: underline;color : #9699F8;'>🤖 ℕ𝕠 ℂ𝕠𝕕𝕖 𝕄𝕃 𝕄𝕠𝕕𝕖𝕝 𝕋𝕣𝕒𝕚𝕟𝕚𝕟𝕘 🤖</h1>",
