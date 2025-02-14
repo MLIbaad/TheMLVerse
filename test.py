@@ -1839,7 +1839,10 @@ elif selected_section == "Algorithm Master":
         nocode_img= Image.open('images/no_code_model_hd.jpg', 'r')
         nocode_img= nocode_img.resize((1200, 400))
         st.image(nocode_img, use_container_width=False)
-
+        import streamlit as st
+        import pandas as pd
+        import pickle
+        import io
         from sklearn.linear_model import LogisticRegression
         from sklearn.svm import SVC
         from sklearn.ensemble import RandomForestClassifier
@@ -1856,32 +1859,49 @@ elif selected_section == "Algorithm Master":
         from sklearn.neural_network import MLPClassifier
         from sklearn.ensemble import BaggingClassifier
         from catboost import CatBoostClassifier
-        import io
-        from ml_utility import preprocess_data, evaluate_model
+        from sklearn.preprocessing import StandardScaler, MinMaxScaler
+        from sklearn.model_selection import train_test_split
+        from sklearn.impute import SimpleImputer
 
         with open('text_files/caution.txt', 'r') as file:
-            caution = file.read()
-            st.write("")
-            st.write(caution)
-
-        with open('text_files/no_code_trainer.txt', 'r') as file:
-            info = file.read()
+            info=file.read()
             st.write("")
             st.write(info)
+
+        with open('text_files/no_code_trainer.txt', 'r') as file:
+            info=file.read()
+            st.write("")
+            st.write(info)
+        def preprocess_data(df, target_column, scaler_type, drop_columns=None):
+            if drop_columns:
+                df = df.drop(drop_columns, axis=1)
+
+            imputer = SimpleImputer(strategy='mean')  # Simple imputer to replace NaN with the mean
+            df_imputed = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+            X = df_imputed.drop(columns=[target_column])
+            y = df_imputed[target_column]
+
+            if scaler_type == "standard":
+                scaler = StandardScaler()
+            else:
+                scaler = MinMaxScaler()
+            X_scaled = scaler.fit_transform(X)
+            return X_scaled, y
+
+        def evaluate_model(model, X_test, y_test):
+            return model.score(X_test, y_test)
 
         uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
-
             st.write("### Preview of Uploaded Dataset")
             st.dataframe(df.head())
+            drop_columns = st.multiselect("Select columns to drop", df.columns.tolist(), default=[])
 
-            col1, col2, col3, col4 = st.columns(4)
+            target_column = st.selectbox("Select the Target Column", df.columns)
+            scaler_type = st.selectbox("Select a scaler", ["standard", "minmax"])
 
-            scaler_type_list = ["standard", "minmax"]
-
-            # Dictionary made with gpt
             model_dictionary = {
                 "Logistic Regression": LogisticRegression(),
                 "Support Vector Classifier": SVC(),
@@ -1901,42 +1921,37 @@ elif selected_section == "Algorithm Master":
                 "CatBoost Classifier": CatBoostClassifier(verbose=0)
             }
 
-            with col1:
-                target_column = st.selectbox("Select the Target Column", list(df.columns))
-            with col2:
-                scaler_type = st.selectbox("Select a scaler", scaler_type_list)
-            with col3:
-                selected_model = st.selectbox("Select a Model", list(model_dictionary.keys()))
-            with col4:
-                model_name = st.text_input("Model name")
+            selected_model = st.selectbox("Select a Model", list(model_dictionary.keys()))
+            model_name = st.text_input("Model name")
 
             if st.button("Train the Model"):
                 try:
-                    X_train, X_test, y_train, y_test = preprocess_data(df, target_column, scaler_type)
-                    st.write(f"Training data shape: {X_train.shape}, Test data shape: {X_test.shape}")
+                    X, y = preprocess_data(df, target_column, scaler_type, drop_columns)
+                    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+                    st.write(f"Training data shape: {X_train.shape}, Test data shape: {X_test.shape}")
                     model_to_be_trained = model_dictionary[selected_model]
                     model_to_be_trained.fit(X_train, y_train)
-
-                    # Evaluating using accuracy
                     accuracy = evaluate_model(model_to_be_trained, X_test, y_test)
                     st.success(f"Test Accuracy: {accuracy:.2f}")
 
-                    # sving the model
                     model_buffer = io.BytesIO()
                     pickle.dump(model_to_be_trained, model_buffer)
                     model_buffer.seek(0)
 
                     if not model_name.strip():
                         model_name = "trained_model"
+
                     st.download_button(
                         label="Download Trained Model",
                         data=model_buffer,
                         file_name=f"{model_name}.pkl",
                         mime="application/octet-stream"
                     )
+
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
+
         else:
             st.info("Please upload a CSV file to get started.")
 
@@ -1955,7 +1970,7 @@ elif selected_section == "REFERENCE":
         selected_option = st.selectbox(
             "Choose a model category:",
             options=[
-                "Select a category",
+                "Select a Model for Info",
                 "Diseases Prediction",
                 "Finance Models",
                 "Fake Predictions",
