@@ -150,7 +150,6 @@ with (st.sidebar):
         menu_icon="list-task",
         default_index=0
     )
-    # Submenu for "Diseases Prediction"
     if selected_section == "Diseases Prediction":
         disease_selection = option_menu(
             menu_title="Choose Disease",
@@ -167,7 +166,7 @@ with (st.sidebar):
             options=["House Price Prediction", "Stocks Visual Analyzer", "Stock Price Prediction",
                      "Bank Loan Prediction"],
             icons=["house-fill", "graph-up-arrow", "currency-exchange","cash-stack"],
-            menu_icon="bar-chart-line",
+            menu_icon="cash",
             default_index=0
         )
 
@@ -176,28 +175,26 @@ with (st.sidebar):
             menu_title="Choose Model",
             options=["Fake News Prediction", "Credit Card Fraud Detection", "Spam Mail Detection"],
             icons=["exclamation-octagon-fill", "shield-lock-fill","envelope-exclamation-fill"],
-            menu_icon="bar-chart-line",
+            menu_icon="exclamation-triangle-fill",
             default_index=0
         )
     elif selected_section == "Analyzer Models":
         Analyzer_selection = option_menu(
-            menu_title="Choose Prediction System",
+            menu_title="Choose Analysis System",
             options=["Simple Sentiment Analysis", "Exploartory Data Analysis"],
             icons=["emoji-smile-fill", "bar-chart-line-fill"],
-            menu_icon="bar-chart-line",
+            menu_icon="bar-chart-fill",
             default_index=0
         )
 
     elif selected_section == "Algorithm Master":
         Algorithm_selection = option_menu(
-            menu_title="Choose Prediction System",
+            menu_title="Choose Algorithm System",
             options=["AutoML", "No Code ML Model Trainer"],
             icons=["cpu-fill", "code-slash"],
-            menu_icon="bar-chart-line",
+            menu_icon="robot",
             default_index=0
         )
-
-# Display content based on sidebar selection
 
 
 if selected_section == "About Project":
