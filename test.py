@@ -856,12 +856,46 @@ elif selected_section == "Finance Models":
                 unsafe_allow_html=True)
             st.markdown(
                 f"""
-                                    <div style='text-align: center; border: 2px solid green; border-radius: 10px; padding: 10px; background-color: #f0fff0;'>
-                                        <h2 style='color: green; margin: 0;'>{cost}</h2>
-                                    </div>
-                                    """,
-                unsafe_allow_html=True
-            )
+                    <div style='
+                    text-align: center; 
+                    border: 3px solid #6D28D9;
+                    border-radius: 20px; 
+                    padding: 25px; 
+                    background: linear-gradient(145deg, #4C1D95, #5B21B6); 
+                    box-shadow: 0 12px 40px rgba(109, 40, 217, 0.3);
+                    font-family: "Trebuchet MS", sans-serif;
+                    position: relative;
+                    overflow: hidden;
+                    transform: perspective(1000px);'>
+                    <div style='
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    width: 200%;
+                    height: 200%;
+                    background: 
+                    radial-gradient(circle at center, 
+                    rgba(109, 40, 217, 0.1) 0%, 
+                    transparent 70%);
+                    opacity: 0.5;
+                    z-index: 1;
+                    '></div>
+                    <div style='
+                    position: relative; 
+                    z-index: 2;
+                    transform: rotateX(5deg);'>
+                    <h2 style='
+                    color: #E9D5FF; 
+                    margin: 0; 
+                    font-size: 34px; 
+                    font-weight: 800;
+                    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+                    letter-spacing: 3px;'>
+                    {int(cost)}$
+                    </h2>
+                    </div>
+                    """,unsafe_allow_html=True)
+
 
 
     elif Finance_model_selection == "Stocks Visual Analyzer":
