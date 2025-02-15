@@ -1987,8 +1987,7 @@ elif selected_section == "Algorithm Master":
             st.info("Please upload a CSV file to get started.")
 
 elif selected_section == "REFERENCE":
-    st.markdown("<h1 style='text-align: center; text-decoration: underline; color:red;'>Model Reference Center</h1>",
-                unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; text-decoration: underline; color:#9699F8;'>𝕄𝕆𝔻𝔼𝕃 ℝ𝔼𝔽𝔼ℝ𝔸ℕℂ𝔼 ℂ𝔼ℕ𝕋𝔼ℝ</h1>",unsafe_allow_html=True)
 
     st.markdown(
         "<h1 style='text-align: center;'>"
