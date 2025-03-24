@@ -333,7 +333,7 @@ elif selected_section == "Diseases Prediction":
                         speak("Diabetes Test Result is that the person is Diabetic, this is just a prediction, doctors consultation is recommended. Below are the best diabetic clinics near you")
 
 
-                        st.write("BEST Diabetic Clinics in Mumbai:")
+                        st.write("BEST Diabetic Clinics Near You:")
                         for clinic in diabetes_clinics:
                             st.write(f"**{clinic['name']}** - {clinic['address']}  \n"
                                      f"Website: [Link]({clinic['website']})  \n"
